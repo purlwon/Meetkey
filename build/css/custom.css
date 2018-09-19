@@ -2614,6 +2614,12 @@ ul.timeline li {
     font-size: 13px;
     padding: 8px
 }
+/*.timeline .tag-bg-red {
+    display: block;
+    height: 30px;
+    font-size: 13px;
+    padding: 8px
+}*/
 .timeline .tag span {
     display: block;
     overflow: hidden;
@@ -2621,11 +2627,23 @@ ul.timeline li {
     white-space: nowrap;
     text-overflow: ellipsis
 }
+/*.timeline .tag-bg-red span {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}*/
 .tag {
     line-height: 1;
     background: #1ABB9C;
     color: #fff !important
 }
+/*.tag-bg-red {
+    line-height: 1;
+    background: #E74C3C;
+    color: #fff !important
+}*/
 .tag:after {
     content: " ";
     height: 30px;
@@ -2634,10 +2652,25 @@ ul.timeline li {
     left: 100%;
     top: 0;
     margin: 0;
+    /*rectangle shape*/
     pointer-events: none;
     border-top: 14px solid transparent;
     border-bottom: 14px solid transparent;
     border-left: 11px solid #1ABB9C
+}
+.tag-bg-red:after {
+    content: " ";
+    height: 30px;
+    width: 0;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    margin: 0;
+    /*rectangle shape*/
+    pointer-events: none;
+    border-top: 14px solid transparent;
+    border-bottom: 14px solid transparent;
+    border-left: 11px solid #E74C3C
 }
 .timeline h2.title {
     position: relative;
@@ -4085,7 +4118,7 @@ ul.verticle_bars li {
 .alert-danger,
 .alert-error {
     color: #E9EDEF;
-    background-color: rgba(231, 76, 60, 0.88);
+    background-color: rgba(231, 76, 60, 0.6);
     border-color: rgba(231, 76, 60, 0.88)
 }
 .ui-pnotify.dark .ui-pnotify-container {
