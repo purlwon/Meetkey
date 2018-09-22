@@ -4018,16 +4018,15 @@ if (typeof NProgress != 'undefined') {
 			  var echartBar = echarts.init(document.getElementById('echart_bar_horizontal'), theme);
 
 			  echartBar.setOption({
-				title: {
-				  text: 'Bar Graph',
-				  subtext: 'Graph subtitle'
-				},
 				tooltip: {
-				  trigger: 'axis'
-				},
-				legend: {
-				  x: 100,
-				  data: ['2015', '2016']
+				  trigger: 'axis', 
+				  axisPointer : {
+				  	type : 'shadow'
+				  }, 
+				  formatter: function (params) {
+				  	var tar = params[1];
+				  	return tar.name + '<br/>' + tar.seriesName + ' : ' + tar.value;
+				  }
 				},
 				toolbox: {
 				  show: true,
@@ -4045,17 +4044,38 @@ if (typeof NProgress != 'undefined') {
 				}],
 				yAxis: [{
 				  type: 'category',
-				  data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
+				  data: ['총 소요시간', '주제1', '주제2', '주제3']
 				}],
-				series: [{
-				  name: '2015',
+				series: [
+				{
+				  name: '보조',
 				  type: 'bar',
-				  data: [18203, 23489, 29034, 104970, 131744, 630230]
-				}, {
-				  name: '2016',
-				  type: 'bar',
-				  data: [19325, 23438, 31000, 121594, 134141, 681807]
-				}]
+				  stack: '총 소요시간',
+				  itemStyle: {
+				  	normal: {
+				  		barBorderColor: 'rgba(0,0,0,0)',
+				  		color: 'rgba(0,0,0,0)'
+				  	}, 
+				  	emphasis: {
+				  		barBorderColor: 'rgba(0,0,0,0)',
+				  		color: 'rgba(0,0,0,0)'
+				  	}
+				  }, 
+				  data: [0, 0, 1200, 1900]
+				}, 
+				{
+					name: '소요시간', 
+					type: 'bar', 
+					stack: '총 소요시간', 
+					label: {
+						normal: {
+							show: true, 
+							position: 'inside'
+						}
+					}, 
+					data: [2900, 1200, 700, 1000]
+				}
+				]
 			  });
 
 			} 
@@ -4228,7 +4248,7 @@ if (typeof NProgress != 'undefined') {
 				legend: {
 				  x: 'center',
 				  y: 'bottom',
-				  data: ['Direct Access', 'E-mail Marketing', 'Union Ad', 'Video Ads', 'Search Engine']
+				  data: ['오정현', '황채원', '송규빈', '조수현', '곽현민']
 				},
 				toolbox: {
 				  show: true,
@@ -4257,25 +4277,25 @@ if (typeof NProgress != 'undefined') {
 				},
 				calculable: true,
 				series: [{
-				  name: '访问来源',
+				  name: '발언자',
 				  type: 'pie',
 				  radius: '55%',
 				  center: ['50%', '48%'],
 				  data: [{
 					value: 335,
-					name: 'Direct Access'
+					name: '오정현'
 				  }, {
 					value: 310,
-					name: 'E-mail Marketing'
+					name: '황채원'
 				  }, {
 					value: 234,
-					name: 'Union Ad'
+					name: '송규빈'
 				  }, {
 					value: 135,
-					name: 'Video Ads'
+					name: '조수현'
 				  }, {
 					value: 1548,
-					name: 'Search Engine'
+					name: '곽현민'
 				  }]
 				}]
 			  });
