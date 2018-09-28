@@ -143,7 +143,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Project Detail <small> design</small></h3>
+                <h3>회의 녹음을 시작해주세요 </h3>
               </div>
 
               <div class="title_right">
@@ -163,153 +163,78 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="x_panel">
-                  <div class="x_title">
-                    <h2>New Partner Contracts Consultancy</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          </li>
-                          <li><a href="#">Settings 2</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
-                    </ul>
-                    <div class="clearfix"></div>
-                  </div>
+
 
                   <div class="x_content">
 
-                    <div class="col-md-9 col-sm-9 col-xs-12">
+                    <div class="col-md-8 col-sm-8 col-xs-12">
 
-                      <ul class="stats-overview">
-                        <li>
-                          <span class="name"> Estimated budget </span>
-                          <span class="value text-success"> 2300 </span>
-                        </li>
-                        <li>
-                          <span class="name"> Total amount spent </span>
-                          <span class="value text-success"> 2000 </span>
-                        </li>
-                        <li class="hidden-phone">
-                          <span class="name"> Estimated project duration </span>
-                          <span class="value text-success"> 20 </span>
-                        </li>
-                      </ul>
-                      <br />
-
-                      <div id="mainb" style="height:350px;"></div>
-
-                      <div>
-
-                        <h4>Recent Activity</h4>
-
-                        <!-- end of user messages -->
-                        <ul class="messages">
-                          <li>
-                            <img src="images/img.jpg" class="avatar" alt="Avatar">
-                            <div class="message_date">
-                              <h3 class="date text-info">24</h3>
-                              <p class="month">May</p>
-                            </div>
-                            <div class="message_wrapper">
-                              <h4 class="heading">Desmond Davison</h4>
-                              <blockquote class="message">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.</blockquote>
-                              <br />
-                              <p class="url">
-                                <span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
-                                <a href="#"><i class="fa fa-paperclip"></i> User Acceptance Test.doc </a>
-                              </p>
-                            </div>
-                          </li>
-                          <li>
-                            <img src="images/img.jpg" class="avatar" alt="Avatar">
-                            <div class="message_date">
-                              <h3 class="date text-error">21</h3>
-                              <p class="month">May</p>
-                            </div>
-                            <div class="message_wrapper">
-                              <h4 class="heading">Brian Michaels</h4>
-                              <blockquote class="message">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.</blockquote>
-                              <br />
-                              <p class="url">
-                                <span class="fs1" aria-hidden="true" data-icon=""></span>
-                                <a href="#" data-original-title="">Download</a>
-                              </p>
-                            </div>
-                          </li>
-                          <li>
-                            <img src="images/img.jpg" class="avatar" alt="Avatar">
-                            <div class="message_date">
-                              <h3 class="date text-info">24</h3>
-                              <p class="month">May</p>
-                            </div>
-                            <div class="message_wrapper">
-                              <h4 class="heading">Desmond Davison</h4>
-                              <blockquote class="message">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth.</blockquote>
-                              <br />
-                              <p class="url">
-                                <span class="fs1 text-info" aria-hidden="true" data-icon=""></span>
-                                <a href="#"><i class="fa fa-paperclip"></i> User Acceptance Test.doc </a>
-                              </p>
-                            </div>
-                          </li>
-                        </ul>
-                        <!-- end of user messages -->
-
-
+                      <h1 id="time" class="text-center" style="margin: 10% 10% 10% 10%">
+                        <span id="hours">00</span> :
+                        <span id="minutes">00</span> :
+                        <span id="seconds">00</span> ::
+                        <span id="milliseconds">000</span>
+                      </h1>
+                      <hr>
+                      <div class="row">
+                        <div class="text-center">
+                          <button id="btn-start-recording" class="btn" style="background-color: white">
+                            <i class="fa fa-circle fa-3x" style="color:Tomato"></i>
+                          </button>
+                          <button id="btn-stop-recording" disabled class="btn" style="background-color: white">
+                            <i class="fa fa-stop-circle-o fa-3x"></i>
+                          </button>
+                        </div>
+                        <hr>
                       </div>
 
+                      <div>
+                        <h4>발언 기록</h4>
+                        <!-- end of user messages -->  
+                        <div class="message_wrapper">
+                          <blockquote id="result" class="message">
+                            결과가 없습니다.
+                          </blockquote>
+                          <br /> 
+                        </div>
+                        <!-- end of user messages -->
+                      </div>
 
                     </div>
 
                     <!-- start project-detail sidebar -->
-                    <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
 
                       <section class="panel">
 
                         <div class="x_title">
-                          <h2>Project Description</h2>
+                          <h2>회의 정보</h2>
                           <div class="clearfix"></div>
                         </div>
                         <div class="panel-body">
-                          <h3 class="green"><i class="fa fa-paint-brush"></i> Gentelella</h3>
+                          <h3 class="green"><i class="fa fa-paint-brush"></i> 프로젝트의 성과가 미치는 영향</h3>
 
-                          <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.</p>
-                          <br />
+                          <p>재무재표와 경쟁사 분석. 비고입니다.</p>
+                          <br /><!--메모/비고-->
 
                           <div class="project_detail">
 
-                            <p class="title">Client Company</p>
-                            <p>Deveint Inc</p>
-                            <p class="title">Project Leader</p>
-                            <p>Tony Chicken</p>
+                            <p class="title">날짜</p>
+                            <p>2018-09-28</p>
+                            <p class="title">시간</p>
+                            <p>14:30:20</p>
+                            <p class="title">장소</p>
+                            <p>Toz 회의실</p>
                           </div>
 
                           <br />
-                          <h5>Project files</h5>
-                          <ul class="list-unstyled project_files">
-                            <li><a href=""><i class="fa fa-file-word-o"></i> Functional-requirements.docx</a>
-                            </li>
-                            <li><a href=""><i class="fa fa-file-pdf-o"></i> UAT.pdf</a>
-                            </li>
-                            <li><a href=""><i class="fa fa-mail-forward"></i> Email-from-flatbal.mln</a>
-                            </li>
-                            <li><a href=""><i class="fa fa-picture-o"></i> Logo.png</a>
-                            </li>
-                            <li><a href=""><i class="fa fa-file-word-o"></i> Contract-10_12_2014.docx</a>
-                            </li>
-                          </ul>
+                          <h5>회의 첨부파일</h5>
+                          <input type="file">
+
                           <br />
 
-                          <div class="text-center mtop20">
-                            <a href="#" class="btn btn-sm btn-primary">Add files</a>
-                            <a href="#" class="btn btn-sm btn-warning">Report contact</a>
+                          <div class="text-right mtop20">
+                            <a href="#" class="btn btn-sm btn-primary">제출하기</a>
                           </div>
                         </div>
 
@@ -329,7 +254,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            Copyright &copy; 2018 MeetKey. All rights reserved.
           </div>
           <div class="clearfix"></div>
         </footer>
@@ -350,6 +275,205 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
+
+    <script src="usefulFunction.js"></script>
+    <script type="text/javascript">
+      const unum = getCookie('unum');
+
+      $(document).ready(function(){ 
+
+        if(!unum) {
+          alert('로그인부터~~~');
+          window.location.replace("https://s3.ap-northeast-2.amazonaws.com/elasticbeanstalk-ap-northeast-2-850538120357/views/login.html");
+        } else {
+          if (annyang) {
+            annyang.start({ paused: true });
+          } else {
+            alert("서비스 사용 불가 브라우저");
+          }
+        }
+      });
+
+      function createAudioElement(blobUrl) {
+          const downloadEl = document.createElement('a');
+          downloadEl.style = 'display: block';
+          downloadEl.innerHTML = 'download';
+          downloadEl.download = 'audio.wav';
+          downloadEl.href = blobUrl;
+          const audioEl = document.createElement('audio');
+          audioEl.controls = true;
+          const sourceEl = document.createElement('source');
+          sourceEl.src = blobUrl;
+          sourceEl.type = 'audio/wav';
+          audioEl.appendChild(sourceEl);
+          // document.body.appendChild(audioEl);
+          // document.body.appendChild(downloadEl);
+          // var element = document.getElementById("recordDetail");
+          // element.appendChild(audioEl);
+          // element.appendChild(downloadEl);
+      }
+
+      // 시작버튼
+      document.getElementById('btn-start-recording').onclick = function() {
+          // 타이머 화면 표시를 위한 변수 선언
+        var hours = minutes = seconds = milliseconds = 0;
+        var prev_hours = prev_minutes = prev_seconds = prev_milliseconds = undefined;
+        var timeUpdate;
+
+        startTime = Date.now(); //시작버튼이 눌린 시각 저장 (밀리세컨드)
+
+        // 시작버튼 눌리면 안냥 시작
+        // Start listening.
+        annyang.start({ autoRestart: true, continuous: true });
+        var recognition = annyang.getSpeechRecognizer();
+        var final_transcript = '';
+        recognition.interimResults = true;
+        recognition.onresult = function(event) {
+          var interim_transcript = '';
+          final_transcript = '';
+          for (var i=event.resultIndex; i<event.results.length;++i) {
+            if(event.results[i].isFinal) {
+              final_transcript += event.results[i][0].transcript;
+              sendTalk(Date.now(), final_transcript);
+              console.log("final_transcript: "+final_transcript);
+            } else {
+              interim_transcript += event.results[i][0].transcript;
+              console.log("interim_transcript: "+interim_transcript);
+            }
+          }
+          document.getElementById('result').innerHTML = "중간값: "+interim_transcript+"<br/>결과값: "+final_transcript;
+          console.log('interim: '+interim_transcript+" | final: "+final_transcript);
+        }
+
+
+
+        this.disabled = true; //시작버튼 이제 사용불가
+        document.getElementById('btn-stop-recording').disabled = false; //종료버튼 활성화
+        // 타이머 화면 표시를 위한 함수
+        updateTime(0,0,0,0);
+      }
+
+
+      // 종료버튼
+      document.getElementById('btn-stop-recording').onclick = function() {
+        //mediaRecorder.stop();
+        if (annyang) {
+          annyang.abort(); //안냥 멈춤
+        } else {
+         alert("서비스 사용 불가 브라우저");
+        }      
+        this.disabled = true; //종료버튼 사용불가
+        document.getElementById('btn-start-recording').disabled = false; //시작버튼 활성화이긴 하나 추후에는 리다이렉트하겟지?
+        // 타이머 화면 표시를 위한 함수
+        if(timeUpdate) clearInterval(timeUpdate);
+        setStopwatch(0,0,0,0);
+      }
+
+
+      function sendTalk(time, talk) {
+       // alert(time);
+       // alert(talk);
+
+       var settings = {
+         crossDomain: true,
+         url: `https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/meet/meeting`,
+         type: "POST",
+         contentType: "application/json",
+           data: `{
+             "unum": ${unum},
+             "mnum": ${mnum},
+             "talk": [${time}, "${talk}"]
+           }`
+        }
+
+       $.ajax(settings)
+         .done(function (response) {
+           if(reponse.message) {
+             alert("error there");
+           }
+         })
+         .fail(function() {});
+      }
+
+
+      // 타이머 업데이트 Update time in stopwatch periodically - every 25ms
+      function updateTime(prev_hours, prev_minutes, prev_seconds, prev_milliseconds){
+          var startTime = new Date();    // fetch current time
+          
+          timeUpdate = setInterval(function () {
+              var timeElapsed = new Date().getTime() - startTime.getTime();    // calculate the time elapsed in milliseconds
+              
+              // calculate hours                
+              hours = parseInt(timeElapsed / 1000 / 60 / 60) + prev_hours;
+              
+              // calculate minutes
+              minutes = parseInt(timeElapsed / 1000 / 60) + prev_minutes;
+              if (minutes > 60) minutes %= 60;
+              
+              // calculate seconds
+              seconds = parseInt(timeElapsed / 1000) + prev_seconds;
+              if (seconds > 60) seconds %= 60;
+              
+              // calculate milliseconds 
+              milliseconds = timeElapsed + prev_milliseconds;
+              if (milliseconds > 1000) milliseconds %= 1000;
+              
+              // set the stopwatch
+              setStopwatch(hours, minutes, seconds, milliseconds);
+              
+          }, 25); // update time in stopwatch after every 25ms
+          
+      }
+
+      // Set the time in stopwatch
+      function setStopwatch(hours, minutes, seconds, milliseconds){
+          $("#hours").html(prependZero(hours, 2));
+          $("#minutes").html(prependZero(minutes, 2));
+          $("#seconds").html(prependZero(seconds, 2));
+          $("#milliseconds").html(prependZero(milliseconds, 3));
+      }
+
+      // Prepend zeros to the digits in stopwatch
+      function prependZero(time, length) {
+          time = new String(time);    // stringify time
+          return new Array(Math.max(length - time.length + 1, 0)).join("0") + time;
+      }
+
+    //   })
+    //   .catch(function(err) {
+    //     console.log('The following error occurred: ' + err);
+    //   })
+    // } else{
+    //   alert('We are not support this browser.');
+    // }
+
+    //
+      function sendData(blob, startTime) {
+        try{
+          var reader = new FileReader();
+          reader.readAsDataURL(blob);
+          reader.onloadend = function() {
+              var base64data = reader.result; //음성파일을 base64(스트링)로 인코딩
+              var base64 = base64data.split(',')[1]; //불필요한 정보 제거
+
+              var d = {
+                'groupid': 1, //내 회의그룹
+                'userid': 'hihi', //내 아이디 , 이 2개의 정보는 나중에 받아오는거 사용
+                'start': startTime,
+                'data': base64
+              };
+              d = JSON.stringify(d);
+
+              var xhr = new XMLHttpRequest();
+              xhr.open('POST', '/');
+              xhr.setRequestHeader('Content-Type', "application/json");
+              xhr.send(d);
+          }
+        } catch(exception){
+          alert(exception)
+        }
+      }
+    </script>
 
   </body>
 </html>
