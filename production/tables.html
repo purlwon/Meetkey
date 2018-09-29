@@ -16,8 +16,9 @@
     <!-- NProgress -->
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-   <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-
+    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
   </head>
@@ -152,31 +153,56 @@
 
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
-                  <div class="x_title">
-                    <h2>Hover rows </h2>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                    <table class="table table-hover">
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th>이름</th>
-                          <th>회사</th>
-                          <th>부서</th>
-                          <th>직책</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                          <td>대리</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                  <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                    <div class="x_title">
+                      <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                        <li role="presentation" class="active">
+                          <a href="#tab_1" id="fav-tab" role="tab" data-toggle="tab" aria-expanded="true">즐겨찾기</a>
+                        </li>
+                        <li role="presentation">
+                          <a href="#tab_2" id="group-tab" role="tab" data-toggle="tab" aria-expanded="flase">그룹</a>
+                        </li>
+                      </ul>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                      <div id="myTabContent" class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade active in" id="tab_1" aria-labelledby="fav-tab">
+                          <table id="Fav" class="table table-hover" cellspacing="0" >
+                            <thead>
+                              <tr role="row">
+                                <th aria-controls="Fav">이름</th>
+                                <th aria-controls="Fav">회사</th>
+                                <th aria-controls="Fav">부서</th>
+                                <th aria-controls="Fav">직책</th>
+                                <th style="width: 60px"></th>
+                              </tr>
+                            </thead>
+                          </table>
+                          <div class="ln_solid"></div>
+                          <div class="text-right">
+                            <!-- 친구 추가 버튼 -->
+                            <button type="button" class="btn btn-primary" id="inputParticipant" data-toggle="modal" data-target="#addfavoriteModal">친구추가</button>
+                          </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="tab_2" aria-labelledby="group-tab">
+                          <table id="group" class="table table-hover" cellspacing="0">
+                            <thead>
+                              <tr>
+                                <th>그룹이름</th> 
+                                <th>멤버</th> 
+                                <!-- <th style="width: 60px"></th> 삭제버튼 -->
+                              </tr>
+                            </thead>
+                          </table>
+                          <div class="ln_solid"></div>
+                          <div  class="text-right">
+                            <!-- 그룹 추가 버튼 -->
+                            <button type="button" class="btn btn-primary" id="inputParticipant" data-toggle="modal" data-target="#addgroupModal">그룹추가</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
 
                   </div>
                 </div>
@@ -195,11 +221,92 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            Copyright &copy; 2018 Meetkey. All rights reserved.
           </div>
           <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- 친구 추가 모달창 -->
+    <!-- add favorite Modal -->
+    <div id="addfavoriteModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">새로운 친구 찾기</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-12">
+                <div class="search input-group" class="dataTables_filter">
+                  <input type="text" class="form-control" placeholder="id를 검색해주세요" id="uid" aria-describedby="result">
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary" onclick=searchFav()>검색</button>
+                  </span>
+                </div>
+                <div id="resultFav" class="searchResult table-responsive p-0">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <th>이름</th>
+                        <th>회사</th>
+                        <th>부서</th>
+                        <th>직책</th>
+                      </tr>
+                      <tr>
+                        <td id="uname"></td>
+                        <td id="company"></td>
+                        <td id="department"></td>
+                        <td id="position"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="text-right">
+                    <button type="button" id="addFav" class="btn btn-info" data-dismiss="modal">추가하기</button>
+                  </div>
+                </div>
+                <p> </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- add group Modal -->
+    <div id="addgroupModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">새로운 그룹 추가</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <form action="/add/group" method="post">
+              <div class="input-group mb-3">
+                <span class="input-group-btn">
+                  <div class="btn btn-default">그룹명</div>
+                </span>
+                <input type="text" class="form-control" placeholder="그룹명을 입력해주세요" name="groupname" id="gname">
+              </div>
+              <div class="form-group mb-3">
+                <select id="sel_fav" class="select2 form-control" multiple="multiple" style="width: 100%">
+                </select>
+              </div>
+              <div class="text-right">
+                <button type="submit" onclick="addGroup();" class="btn btn-info" data-dismiss="modal">추가</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -213,8 +320,15 @@
     <script src="../vendors/nprogress/nprogress.js"></script>
     <!-- iCheck -->
     <script src="../vendors/iCheck/icheck.min.js"></script>
+    <!-- Select2 -->
+    <script src="../vendors/select2/dist/js/select2.js"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
+
+    <!-- <script src="usefulFunction.js"></script> -->
+    <script type="text/javascript">
+
+    </script>
   </body>
 </html>
