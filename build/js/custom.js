@@ -4010,6 +4010,72 @@ if (typeof NProgress != 'undefined') {
 			  });
 
 			} 
+
+
+			   //echart Bar Stacked
+
+			if ($('#echart_bar_stacked').length){
+
+				var echartBar = echarts.init(document.getElementById('echart_bar_stacked'), theme);
+
+				echartBar.setOption({
+					tooltip: {
+						trigger: 'axis', 
+						axisPointer: {
+							type: 'shadow'
+						}
+					},
+					toolbox: {
+						show: true,
+					 	feature: {
+							saveAsImage: {
+						  		show: true,
+						  		title: "Save Image"
+							}
+					  	}
+					}, 
+					gird: {
+						left: '3%', 
+						right: '4%', 
+						bottom: '3%', 
+						containLabel: true
+					}, 
+					xAxis:  {
+				        type: 'value'
+				    },
+				    yAxis: {
+				        type: 'category',
+				        data: ['주제1','주제2','주제3']
+				    },
+				    series: [
+				    	{
+				    		name: '노이즈 시간', 
+				    		type: 'bar', 
+				    		stack: '소요시간', 
+				    		label: {
+				    			normal: {
+				    				show: true, 
+				    				position: 'insideRight'
+				    			}
+				    		}, 
+				    		data: [300, 100, 100]
+				    	}, 
+				    	{
+				    		name: '주제별 시간', 
+				    		type: 'bar', 
+				    		stack: '소요시간', 
+				    		label: {
+				    			normal: {
+				    				show: true, 
+				    				position: 'insideRight'
+				    			}
+				    		}, 
+				    		data: [1200, 700, 1000]
+				    	}
+				    ]
+				})
+
+			}
 			  
 			   //echart Bar Horizontal
 			  
@@ -4264,10 +4330,6 @@ if (typeof NProgress != 'undefined') {
 						  max: 1548
 						}
 					  }
-					},
-					restore: {
-					  show: true,
-					  title: "Restore"
 					},
 					saveAsImage: {
 					  show: true,
