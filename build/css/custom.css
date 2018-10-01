@@ -1,7 +1,7 @@
 
 html , body{
 	
- height:100%;
+ min-height:100%;
  
 }
  
@@ -3432,7 +3432,7 @@ ul.project_files li a i {
     font-size: 35px
 }
 .login {
-    background: #F7F7F7
+    background: linear-gradient(to right bottom,#7DE2FC, #B9B6E5);
 }
 .login .fa-paw {
     font-size: 26px
