@@ -92,7 +92,7 @@ html , body{
     background: #213345
 }
 .daterangepicker.picker_1 .calendar-table thead tr:first-child {
-    background: #1ABB9C
+    background: #7DE2FC
 }
 .daterangepicker.picker_1 .calendar-table td.off {
     background: #34495E;
@@ -102,14 +102,14 @@ html , body{
     color: #34495E
 }
 .daterangepicker.picker_2 .calendar-table thead tr {
-    color: #1ABB9C
+    color: #7DE2FC
 }
 .daterangepicker.picker_2 .calendar-table thead tr:first-child {
     color: #73879C
 }
 .daterangepicker.picker_3 .calendar-table thead tr:first-child {
     color: #fff;
-    background: #1ABB9C
+    background: #7DE2FC
 }
 .daterangepicker.picker_4 .calendar-table thead tr:first-child {
     color: #fff;
@@ -201,7 +201,7 @@ html , body{
 }
 .nav-sm .nav.child_menu li.active,
 .nav-sm .nav.side-menu li.active-sm {
-    border-right: 5px solid #1ABB9C
+    border-right: 5px solid #7DE2FC
 }
 .nav-sm ul.nav.child_menu ul,
 .nav-sm .nav.side-menu li.active-sm ul ul {
@@ -210,7 +210,7 @@ html , body{
     background: none
 }
 .nav-sm>.nav.side-menu>li.active-sm>a {
-    color: #1ABB9C !important
+    color: #7DE2FC !important
 }
 .nav-sm .nav.side-menu li a i.toggle-up {
     display: none !important
@@ -410,7 +410,7 @@ body .container.body .right_col {
     color: #9B59B6
 }
 .green {
-    color: #1ABB9C
+    color: #7DE2FC
 }
 .aero {
     color: #9CC2CB
@@ -428,7 +428,7 @@ body .container.body .right_col {
     border-color: #9B59B6 !important
 }
 .border-green {
-    border-color: #1ABB9C !important
+    border-color: #7DE2FC !important
 }
 .border-aero {
     border-color: #9CC2CB !important
@@ -445,8 +445,8 @@ body .container.body .right_col {
     color: #73879C
 }
 .bg-green {
-    background: #1ABB9C !important;
-    border: 1px solid #1ABB9C !important;
+    background: #7DE2FC !important;
+    border: 1px solid #7DE2FC !important;
     color: #fff
 }
 .bg-red {
@@ -630,10 +630,11 @@ table.no-margin .progress {
 .col-lg-12 {
     position: relative;
     min-height: 1px;
-    float: left;
+    float: block;
     padding-right: 10px;
     padding-left: 10px
 }
+
 .row {
     margin-right: -10px;
     margin-left: -10px
@@ -789,7 +790,7 @@ a:focus {
 }
 .nav.side-menu>li.current-page,
 .nav.side-menu>li.active {
-    border-right: 5px solid #1ABB9C
+    border-right: 5px solid #7DE2FC
 }
 .nav li.current-page {
     background: rgba(255, 255, 255, 0.05)
@@ -1361,7 +1362,7 @@ table.jambo_table tbody tr.selected td {
 }
 table.dataTable th.focus,
 table.dataTable td.focus {
-    outline: 2px solid #1ABB9C !important;
+    outline: 2px solid #7DE2FC !important;
     outline-offset: -1px
 }
 table.display {
@@ -2471,7 +2472,7 @@ textarea:focus {
 }
 .bs-glyphicons li:hover {
     color: #fff;
-    background-color: #1ABB9C
+    background-color: #7DE2FC
 }
 @media (min-width: 768px) {
     .bs-glyphicons {
@@ -2497,7 +2498,7 @@ span.tag {
     float: left;
     padding: 5px 9px;
     text-decoration: none;
-    background: #1ABB9C;
+    background: #7DE2FC;
     color: #F1F6F7;
     margin-right: 5px;
     font-weight: 500;
@@ -2636,7 +2637,7 @@ ul.timeline li {
 }*/
 .tag {
     line-height: 1;
-    background: #1ABB9C;
+    background: #7DE2FC;
     color: #fff !important
 }
 /*.tag-bg-red {
@@ -2656,7 +2657,7 @@ ul.timeline li {
     pointer-events: none;
     border-top: 14px solid transparent;
     border-bottom: 14px solid transparent;
-    border-left: 11px solid #1ABB9C
+    border-left: 11px solid #7DE2FC
 }
 .tag-bg-red:after {
     content: " ";
@@ -2737,7 +2738,7 @@ ul.social li {
     border-radius: 50%
 }
 .chat .status.online {
-    background: #1ABB9C
+    background: #7DE2FC
 }
 .chat .status.away {
     background: #F39C12
@@ -2863,7 +2864,7 @@ ul.widget_profile_box li a {
     padding: 0px
 }
 ul.widget_profile_box li a:hover {
-    color: #1ABB9C !important;
+    color: #7DE2FC !important;
     border: 1px solid #26b99a
 }
 ul.widget_profile_box li .profile_img {
@@ -3053,7 +3054,7 @@ ul.project_files li a i {
     background: #fff
 }
 .pricing .title {
-    background: #1ABB9C;
+    background: #7DE2FC;
     height: 110px;
     color: #fff;
     padding: 15px 0 0;
@@ -3444,7 +3445,7 @@ a.hiddenanchor {
     right: 0px;
     margin: 0px auto;
     margin-top: 5%;
-    max-width: 350px;
+    max-width: 720px;
     position: relative
 }
 .registration_form,
@@ -3488,10 +3489,190 @@ a.hiddenanchor {
     animation-timing-function: ease;
     animation-fill-mode: both
 }
-.login_box {
+
+/*login-box, register-box*/
+
+/*.login_box {
     padding: 20px;
     margin: auto
+}*/
+
+.login-box,
+.register-box {
+  width: 720px;
+  margin: 2% auto;
+
 }
+
+@media (max-width: 1000px) {
+  .login-box,
+  .register-box {
+    width: 90%;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+}
+
+.login-box-body,
+.register-box-body {
+  background: #ffffff;
+  padding: 20px;
+  border-top: 0;
+  color: #666;
+}
+
+/*
+image - card background
+*/
+.image-card-body{
+  flex: 1 1 auto;
+  position:relative;
+  background: #2A3F54 url(../../production/images/meeting_01.jpg) no-repeat center center/cover;
+  background-blend-mode: overlay;
+}
+
+
+/* CUSTOMIZE THE CAROUSEL
+    -------------------------------------------------- */
+/* Carousel base class */
+.sv-carousel {
+  margin-bottom: 60px;
+}
+
+.sv-carousel .sv-container {
+  position: relative;
+  z-index: 9;
+}
+
+.sv-carousel-control {
+  height: 80px;
+  margin-top: 0;
+  font-size: 120px;
+  text-shadow: 0 1px 1px rgba(0,0,0,.4);
+  background-color: transparent;
+  border: 0;
+  z-index: 10;
+}
+
+.sv-carousel .item {
+  height: 500px;
+}
+.sv-carousel img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 500px;
+}
+
+.sv-carousel-caption {
+  background-color: transparent;
+  position: static;
+  max-width: 550px;
+  padding: 0 20px;
+  /*
+  margin-top: 200px;
+  */
+
+}
+.sv-carousel-caption h1,
+.sv-carousel-caption .lead {
+  margin: 0;
+  line-height: 1.25;
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0,0,0,.4);
+}
+.sv-carousel-caption .btn {
+  margin-top: 10px;
+}
+
+/*
+ * Service introduction
+ * ---------------------------
+ */
+
+.service-box {
+  position: absolute;
+  z-index: 2;
+  height: 100%;    
+  width: 100%;  
+  top:0;
+
+}
+
+.service-box-msg {
+  /*
+  position:absolute;
+  top:5%;
+  left:10px;
+  */
+  margin: 0;
+  font-size: 4rem;
+  color: white;
+  text-align: center;
+  padding: 80px 20px 20px 20px;  
+}
+
+.service-box-detail {
+  /*
+  position:absolute;
+  top:50%;
+  left:10px;
+  */
+  animation: ease-in;
+  margin: 0;
+  font-size: 1.5rem;
+  color: white;
+  text-align: center;
+  word-wrap: break-word;
+  padding: 60px 20px 90px 20px;  
+}
+
+/*
+my picture
+*/
+.picture-container{
+  position: relative;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.picture-src{
+  width: 100%;
+  height: 100%;
+}
+
+.picture{
+  width: 106px;
+  height: 106px;
+  background-color: $gray-bg;
+  border: 4px solid #CCCCCC;
+  color: $white-color;
+  border-radius: 50%;
+  margin: 5px auto;
+  overflow: hidden;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+
+  &:hover{
+      border-color: #2ca8ff;
+  }
+}
+
+.picture input[type="file"] {
+  cursor: pointer;
+  display: block;
+  height: 100%;
+  left: 0;
+  /*
+  opacity: 0 !important;
+  */
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+
 .left {
     float: left
 }
@@ -3513,7 +3694,7 @@ form:after {
 }
 .login_content {
     margin: 0 auto;
-    padding: 25px 0 0;
+    padding: 25px 20px 0;
     position: relative;
     text-align: center;
     text-shadow: 0 1px 0 #fff;
@@ -3649,14 +3830,14 @@ header {
     width: 100%
 }
 #nprogress .bar {
-    background: #1ABB9C
+    background: #7DE2FC
 }
 #nprogress .peg {
-    box-shadow: 0 0 10px #1ABB9C, 0 0 5px #1ABB9C
+    box-shadow: 0 0 10px #7DE2FC, 0 0 5px #7DE2FC
 }
 #nprogress .spinner-icon {
-    border-top-color: #1ABB9C;
-    border-left-color: #1ABB9C
+    border-top-color: #7DE2FC;
+    border-left-color: #7DE2FC
 }
 .editor-wrapper {
     min-height: 250px;
@@ -3925,7 +4106,7 @@ fieldset {
 }
 .wizard_horizontal ul.wizard_steps li a.done:before,
 .wizard_horizontal ul.wizard_steps li a.done .step_no {
-    background: #1ABB9C;
+    background: #7DE2FC;
     color: #fff
 }
 .wizard_horizontal ul.wizard_steps li:first-child a:before {
@@ -4022,7 +4203,7 @@ fieldset {
 }
 .wizard_verticle ul.wizard_steps li a.done:before,
 .wizard_verticle ul.wizard_steps li a.done .step_no {
-    background: #1ABB9C;
+    background: #7DE2FC;
     color: #fff
 }
 .wizard_verticle ul.wizard_steps li:first-child a:before {
