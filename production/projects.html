@@ -19,7 +19,7 @@
     <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="../build/css/custom.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -48,9 +48,11 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
+                <!--프로필 이미지-->
                 <img src="images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
+                <!-- 회원 정보 -->
                 <span>(주)한이음/웹팀</span>
                 <h2>황채원</h2>
               </div>
@@ -133,17 +135,6 @@
               <div class="title_left">
                 <h3>회의록 리스트 </h3>
               </div>
-
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                  </div>
-                </div>
-              </div>
             </div>
             
             <div class="clearfix"></div>
@@ -152,31 +143,31 @@
               <div class="col-md-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>전체 회의록</h2>
+                    <h4><i class="fa fa-file"></i> 전체 회의록</h4>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
 
-                    <!-- start project list -->
+                    <!-- 회의록 테이블 // 회의 기본 정보 -->
                     <table class="table table-striped table-hover projects">
                       <thead>
                         <tr>
-                          <th style="width: 1%">#</th>
-                          <th style="width: 20%">회의 주제</th>
-                          <th style="width: 20%">회의 일시</th>
-                          <th>회의 참여자</th>
+                          <th style="width: 20%">회의 주제</th><!--회의 주제-->
+                          <th style="width: 20%">회의 일시</th><!--회의 날짜+회의시간-->
+                          <th>회의 참여자</th><!--회의 참여자-->
+                          <th>전체 회의 내용</th>
                           <th style="width: 20%">전체 텍스트 다운로드</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td>#</td>
                           <td>
-                            <a>회의 주제 1번입니다.</a>
+                            <!-- 회의 주제가 띄워지고 클릭 시 해당 회의 분석 페이지로 이동해야해용 -->
+                            <a href="echarts.html">회의 주제 1번입니다.</a>
                           </td>
                           <td>
-                            <small>2018-09-29</small>
-                            <small>14:09:28</small>
+                            <small>2018-09-29</small> <!--회의 날짜 가져옴-->
+                            <small>14:09:28</small> <!--회의 시간 가져옴-->
                           </td>
                           <td>
                             <ul class="list-inline">
@@ -198,16 +189,18 @@
                             </ul>
                           </td>
                           <td>
-                            <a href="#">
+                            <a href="chat.html">확인하기</a><!--해당 회의에 맞는 채팅 페이지로 동적 이동-->
+                          </td>
+                          <td>
+                            <a href="#"><!--DB에서 해당파일 동적으로 가져오는 링크 -->
                               <i class="fa fa-file-text-o"></i>
-                              회의 주제 1번입니다.txt
+                              회의 주제 1번입니다.txt<!--전체 텍스트 파일 이름.형식-->
                             </a>
                           </td>
                         </tr>
                         <tr>
-                          <td>#</td>
                           <td>
-                            <a>회의 주제 2번입니다.</a>
+                            <a href="echarts.html">회의 주제 2번입니다.</a>
                           </td>
                           <td>
                             <small>2018-09-29</small>
@@ -224,16 +217,18 @@
                             </ul>
                           </td>
                           <td>
-                            <a href="#">
+                            <a href="chat.html">확인하기</a><!--해당 회의에 맞는 채팅 페이지로 동적 이동-->
+                          </td>
+                          <td>
+                            <a href="#"><!--DB에서 해당파일 동적으로 가져오는 링크 -->
                               <i class="fa fa-file-text-o"></i>
-                              회의 주제 2번입니다.txt
+                              회의 주제 2번입니다.txt<!--전체 텍스트 파일 이름.형식-->
                             </a>
                           </td>
                         </tr>
                         <tr>
-                          <td>#</td>
                           <td>
-                            <a>회의 주제 3번입니다.</a>
+                            <a href="echarts.html">회의 주제 3번입니다.</a>
                           </td>
                           <td>
                             <small>2018-09-29</small>
@@ -253,15 +248,18 @@
                             </ul>
                           </td>
                           <td>
-                            <a href="#">
+                            <a href="chat.html">확인하기</a><!--해당 회의에 맞는 채팅 페이지로 동적 이동-->
+                          </td>
+                          <td>
+                            <a href="#"><!--DB에서 해당파일 동적으로 가져오는 링크 -->
                               <i class="fa fa-file-text-o"></i>
-                              회의 주제 3번입니다.txt
+                              회의 주제 3번입니다.txt<!--전체 텍스트 파일 이름.형식-->
                             </a>
                           </td>
                         </tr>
                       </tbody>
                     </table>
-                    <!-- end project list -->
+                    <!-- end 전체 회의록 -->
 
                   </div>
                 </div>
@@ -274,7 +272,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            Copyright &copy; 2018 Meetkey. All rights reserved.
           </div>
           <div class="clearfix"></div>
         </footer>

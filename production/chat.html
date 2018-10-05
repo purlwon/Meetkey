@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Gentelella Alela! | </title>
+
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- jQuery custom content scroller -->
+    <link href="../vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.css" rel="stylesheet">
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col menu_fixed">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title ">
+                <div class="row">
+                  <div class="col-xs-3">
+                    <img src="images/MeetKey_logo3.png" alt="..." class="" style="max-width: 100%; max-height: 100%">
+                  </div>
+                  <div class="col-xs-8">
+                    <img src="images/MeetKey_text.png" alt="..." style="max-width: 100%; max-height: 100%">
+                    <!-- <span>Meetkey</span> -->
+                  </div>
+                  <div class="col-xs-1">
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_pic">
+                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+                <span>(주)한이음/웹팀</span>
+                <h2>황채원</h2>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <!-- <h3>General</h3> -->
+                <ul class="nav side-menu">
+                  <li><a href="index.html"><i class="fa fa-home"></i> Dashboard </a>
+                  </li>
+                  <li><a><i class="fa fa-bar-chart-o"></i> 회의 분석 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="echarts.html">지난 회의 결과</a></li>
+                      <li><a href="projects.html">회의록 리스트</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-edit"></i> 회의 관리 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="form.html">회의 만들기</a></li>
+                      <li><a href="tables_dynamic.html">회의 예약리스트</a></li>
+                      <li><a href="project_detail.html">회의 중(임시)</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="tables.html"><i class="fa fa-group"></i> 친구 관리 </a>
+                  </li>
+                  <li><a href="calendar.html"><i class="fa fa-calendar"></i> 일정 관리 </a>
+                  </li>
+                  <li><a href="profile.html"><i class="fa fa-cog"></i> 개인 설정 </a>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+            <!-- /sidebar menu -->
+
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="images/img.jpg" alt="">황채원
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="javascript:;"> Profile</a></li>
+                    <li>
+                      <a href="javascript:;">
+                        <span class="badge bg-red pull-right">50%</span>
+                        <span>Settings</span>
+                      </a>
+                    </li>
+                    <li><a href="javascript:;">Help</a></li>
+                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>전체 회의 내용</h3>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <!-- <div class="x_panel">
+                  <div class="x_content">
+                    <br />
+                    
+                  </div>
+                </div> -->
+                <!-- DIRECT CHAT -->
+                <div class="x_panel direct-chat direct-chat-primary">
+                  <div class="x_title" >
+                    <h4><i class="fa fa-comments"></i> 처음에 입력한 회의 주제 </h4>
+                    <div class="clearfix"></div>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="x_content">
+                    <div class="row">
+                      <div class="col-md-3" >
+                        <!-- 회의 참여자 -->
+                        <section class="panel">
+                          <div class="x_title" >
+                            <h5>회의 참여자</h5>
+                            <div class="clearfix"></div>
+                          </div>
+                          <div class="direct-chat-messages" style="height: 324px;">
+                            <ul class="list-unstyled msg_list">
+                              <li>
+                                <a>
+                                  <span class="image">
+                                    <img src="images/img.jpg" alt="img">
+                                  </span>
+                                  <span>
+                                    <span>스미스씨</span>
+                                  </span>
+                                  <span class="message">(주)한이음/웹팀/직책</span>
+                                </a>
+                              </li>
+                              <li>
+                                <a>
+                                  <span class="image">
+                                    <img src="images/img.jpg" alt="img">
+                                  </span>
+                                  <span>
+                                    <span>홍길동</span>
+                                  </span>
+                                  <span class="message">(주)한이음/웹팀/직책</span>
+                                </a>
+                              </li>
+                              <li>
+                                <a>
+                                  <span class="image">
+                                    <img src="images/img.jpg" alt="img">
+                                  </span>
+                                  <span>
+                                    <span>한이음씨</span>
+                                  </span>
+                                  <span class="message">(주)한이음/웹팀/직책</span>
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                        </section>
+                      </div>
+                      <div class="col-md-9 mail_view">
+                        <!-- Conversations are loaded here -->
+                        
+                        <div class="direct-chat-messages">
+                          <!-- 회의록 left=나를 제외한 상대들 모두-->
+                          <!-- Message. Default to the left -->
+                          <div class="direct-chat-msg">
+                            <div class="direct-chat-info clearfix">
+                              <span class="direct-chat-name left">Alexander Pierce</span><!--참여자 이름-->
+                              <span class="direct-chat-timestamp right">23 Jan 2:00 pm</span><!--타임스탬프-->
+                            </div>
+                            <!-- /.direct-chat-info -->
+                            <img class="direct-chat-img" src="images/img.jpg" alt="message user image"><!--참여자 프로필사진-->
+                            <!-- /.direct-chat-img -->
+                            <div class="direct-chat-text">
+                              Is this template really for free? That's unbelievable!
+                            </div><!--발언내용-->
+                            <!-- /.direct-chat-text -->
+                          </div>
+                          <!-- /.direct-chat-msg -->
+
+                          <div class="clearfix"></div>
+
+                          <!-- 회의록 right=나 -->
+                          <!-- Message to the right -->
+                          <div class="direct-chat-msg right" style="float: right;">
+                            <div class="direct-chat-info clearfix">
+                              <span class="direct-chat-name right">Sarah Bullock</span>
+                              <span class="direct-chat-timestamp left">23 Jan 2:05 pm</span>
+                            </div>
+                            <!-- /.direct-chat-info -->
+                            <img class="direct-chat-img" src="images/picture.jpg" alt="message user image">
+                            <!-- /.direct-chat-img -->
+                            <div class="direct-chat-text">
+                              You better believe it!
+                            </div>
+                            <!-- /.direct-chat-text -->
+                          </div>
+                          <!-- /.direct-chat-msg -->
+
+                          <div class="clearfix"></div>
+
+                          <!-- Message. Default to the left -->
+                          <div class="direct-chat-msg">
+                            <div class="direct-chat-info clearfix">
+                              <span class="direct-chat-name left">Alexander Pierce</span>
+                              <span class="direct-chat-timestamp right">23 Jan 5:37 pm</span>
+                            </div>
+                            <!-- /.direct-chat-info -->
+                            <img class="direct-chat-img" src="images/img.jpg" alt="message user image">
+                            <!-- /.direct-chat-img -->
+                            <div class="direct-chat-text">
+                              Working with AdminLTE on a great new app! Wanna join?
+                            </div>
+                            <!-- /.direct-chat-text -->
+                          </div>
+                          <!-- /.direct-chat-msg -->
+
+                          <div class="clearfix"></div>
+
+                          <!-- Message to the right -->
+                          <div class="direct-chat-msg right" style="float: right;">
+                            <div class="direct-chat-info clearfix">
+                              <span class="direct-chat-name right">Sarah Bullock</span>
+                              <span class="direct-chat-timestamp left">23 Jan 6:10 pm</span>
+                            </div>
+                            <!-- /.direct-chat-info -->
+                            <img class="direct-chat-img" src="images/picture.jpg" alt="message user image">
+                            <!-- /.direct-chat-img -->
+                            <div class="direct-chat-text" >
+                              I would love to.
+                            </div>
+                            <!-- /.direct-chat-text -->
+                          </div>
+                          <!-- /.direct-chat-msg -->
+
+                          <div class="clearfix"></div>
+
+                        </div>
+                        <!--/.direct-chat-messages-->
+
+                        <!-- Contacts are loaded here -->
+                        
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+                <!--/.direct-chat -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Copyright &copy; 2018 Meetkey. All rights reserved.
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- jQuery custom content scroller -->
+    <script src="../vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.js"></script>
+  </body>
+</html>
