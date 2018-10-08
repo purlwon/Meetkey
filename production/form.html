@@ -164,17 +164,17 @@
                     <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">회의 주제 <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">회의 이름 <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="text" id="mname" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">회의 날짜 <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12  date" >
-                          <input type="text" id="myDatepicker2" name required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="text" id="date" name required="required" class="form-control col-md-7 col-xs-12">
 
                         </div>
                       </div>
@@ -182,14 +182,14 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">회의 시간 <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12 date">
-                          <input id="myDatepicker3" required="required" class="form-control col-md-7 col-xs-12" type="text" name>
+                          <input id="time" required="required" class="form-control col-md-7 col-xs-12" type="text" name>
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">회의 장소 <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="birthday" class="form-control col-md-7 col-xs-12" required="required" type="text">
+                          <input id="where" class="form-control col-md-7 col-xs-12" required="required" type="text">
                         </div>
                       </div>
                       <div class="form-group">
@@ -296,6 +296,34 @@
       $(document).ready(function() {
           $('.select2').select2();
       });
+    </script>
+
+    <script>
+      function postMeetingInfo() {
+        var id = $("#id").val();
+        var pw = $("#pw").val();
+
+        var settings = {
+          crossDomain: true,
+          url: "https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/login",
+          type: "POST",
+          contentType: "application/json",
+          data: `{
+            "uid": "${id}",
+            "pw": "${pw}"
+          }`
+        }
+
+        $.ajax(settings)
+          .done(function (response) {
+            document.cookie = `unum=${response.unum}`;
+            alert(document.cookie);
+            window.location.replace("https://s3.ap-northeast-2.amazonaws.com/elasticbeanstalk-ap-northeast-2-850538120357/views/dashboard.html");
+          })
+          .fail(function () {
+            alert('fail');
+          });
+      }
     </script>
 
   </body>
