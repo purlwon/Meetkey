@@ -217,7 +217,7 @@ var setTimePerTalker = function(echartPie, response){
     for(var i=0;i<response.time_per_talker.length;i++){
       data.push({
         value: response.time_per_talker[i][1],
-        name: response.member[0][response.time_per_talker[i][0]].uname
+        name: response.member[response.time_per_talker[i][0]].uname
       })
     }
 
