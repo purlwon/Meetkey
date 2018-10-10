@@ -372,7 +372,7 @@
 
         $.ajax(settings)
           .done(function (response) {
-            window.location.replace("project_detail.html");
+            window.location.replace("project_detail.html?mid="+mid);
           })
           .fail(function () {
             alert('fail');

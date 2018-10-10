@@ -19,7 +19,7 @@
     <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="../build/css/custom.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -133,25 +133,13 @@
               <div class="title_left">
                 <h3>회의 녹음을 시작해주세요 </h3>
               </div>
-
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
-                  </div>
-                </div>
-              </div>
             </div>
-            
+
             <div class="clearfix"></div>
 
             <div class="row">
               <div class="col-md-12">
                 <div class="x_panel">
-
 
                   <div class="x_content">
 
@@ -178,12 +166,12 @@
 
                       <div>
                         <h4>발언 기록</h4>
-                        <!-- end of user messages -->  
+                        <!-- end of user messages -->
                         <div class="message_wrapper">
                           <blockquote id="result" class="message">
                             결과가 없습니다.
                           </blockquote>
-                          <br /> 
+                          <br />
                         </div>
                         <!-- end of user messages -->
                       </div>
@@ -196,23 +184,23 @@
                       <section class="panel">
 
                         <div class="x_title">
-                          <h2>회의 정보</h2>
+                          <h4>회의 정보</h4>
                           <div class="clearfix"></div>
                         </div>
                         <div class="panel-body">
-                          <h3 class="green"><i class="fa fa-paint-brush"></i> 프로젝트의 성과가 미치는 영향</h3>
+                          <h3 class="green" id="mname"><i class="fa fa-paint-brush"></i> 회의 주제입니다.</h3>
 
-                          <p>재무재표와 경쟁사 분석. 비고입니다.</p>
+                          <p id="memo">비고입니다.</p>
                           <br /><!--메모/비고-->
 
                           <div class="project_detail">
 
                             <p class="title">날짜</p>
-                            <p>2018-09-28</p>
+                            <p id="date">2018-09-28</p>
                             <p class="title">시간</p>
-                            <p>14:30:20</p>
+                            <p id="date_time">왜안뜨냐 너</p>
                             <p class="title">장소</p>
-                            <p>Toz 회의실</p>
+                            <p id="where">Toz 회의실</p>
                           </div>
 
                           <br />
@@ -221,8 +209,9 @@
 
                           <br />
 
-                          <div class="text-right mtop20">
-                            <a href="#" class="btn btn-sm btn-primary">제출하기</a>
+                          <div class="text-right mtop20" id="forMade">
+                            <input type=text id="num" placeholder="주제 개수"></input>
+                            <input type="submit" value="회의 제출" onclick="endMeeting()" class="btn btn-sm btn-primary">
                           </div>
                         </div>
 
@@ -260,27 +249,28 @@
     <script src="../vendors/nprogress/nprogress.js"></script>
     <!-- ECharts -->
     <script src="../vendors/echarts/dist/echarts.min.js"></script>
-
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-
-    <script src="usefulFunction.js"></script>
+    <script src="./js/cookie.js"></script>
+    <!-- Annyang -->
+    <script src="../vendors/annyang/annyang.js"></script>
+    <!-- <script src="usefulFunction.js"></script> -->
     <script type="text/javascript">
-      const unum = getCookie('unum');
 
-      $(document).ready(function(){ 
+      // 쿠키없으면 그냥 1로 설정
+      if(!getCookie('unum')) {
+        document.cookie = "unum=1;max-age=60*60*24*3";
+        var unum=1;
+      }
 
-        if(!unum) {
-          alert('로그인부터~~~');
-          window.location.replace("https://s3.ap-northeast-2.amazonaws.com/elasticbeanstalk-ap-northeast-2-850538120357/views/login.html");
-        } else {
-          if (annyang) {
-            annyang.start({ paused: true });
-          } else {
-            alert("서비스 사용 불가 브라우저");
-          }
-        }
+      var mid = "";
+
+      $(document).ready(function(){
+        mid = parent.document.URL.substring(parent.document.URL.indexOf('=')+1, parent.document.URL.length);
+        alert(mid);
+        printMeetingInfo();
       });
+
 
       function createAudioElement(blobUrl) {
           const downloadEl = document.createElement('a');
@@ -300,119 +290,146 @@
           // element.appendChild(audioEl);
           // element.appendChild(downloadEl);
       }
-
-      // 시작버튼
-      document.getElementById('btn-start-recording').onclick = function() {
-          // 타이머 화면 표시를 위한 변수 선언
-        var hours = minutes = seconds = milliseconds = 0;
-        var prev_hours = prev_minutes = prev_seconds = prev_milliseconds = undefined;
-        var timeUpdate;
-
-        startTime = Date.now(); //시작버튼이 눌린 시각 저장 (밀리세컨드)
-
-        // 시작버튼 눌리면 안냥 시작
-        // Start listening.
-        annyang.start({ autoRestart: true, continuous: true });
-        var recognition = annyang.getSpeechRecognizer();
-        var final_transcript = '';
-        recognition.interimResults = true;
-        recognition.onresult = function(event) {
-          var interim_transcript = '';
-          final_transcript = '';
-          for (var i=event.resultIndex; i<event.results.length;++i) {
-            if(event.results[i].isFinal) {
-              final_transcript += event.results[i][0].transcript;
-              sendTalk(Date.now(), final_transcript);
-              console.log("final_transcript: "+final_transcript);
-            } else {
-              interim_transcript += event.results[i][0].transcript;
-              console.log("interim_transcript: "+interim_transcript);
-            }
+      if (annyang) {
+        // 시작버튼
+        document.getElementById('btn-start-recording').onclick = function() {
+            // 타이머 화면 표시를 위한 변수 선언
+          var hours = minutes = seconds = milliseconds = 0;
+          var prev_hours = prev_minutes = prev_seconds = prev_milliseconds = undefined;
+          var timeUpdate;
+          // startTime = Date.now(); //시작버튼이 눌린 시각 저장 (밀리세컨드)
+          // 시작버튼
+          // Start listening.
+          annyang.start({ autoRestart: true, continuous: false });
+          var recognition = annyang.getSpeechRecognizer();
+          var final_transcript = '';
+          var time = 0;
+          recognition.interimResults = true;
+          recognition.onstart = function(event) {
+            time = Date.now(); //버튼 클릭 시각 저장
           }
-          document.getElementById('result').innerHTML = "중간값: "+interim_transcript+"<br/>결과값: "+final_transcript;
-          console.log('interim: '+interim_transcript+" | final: "+final_transcript);
+          recognition.onresult = function(event) {
+            var interim_transcript = '';
+            final_transcript = '';
+            for (var i=event.resultIndex; i<event.results.length;++i) {
+              if(event.results[i].isFinal) {
+                final_transcript += event.results[i][0].transcript;
+                sendTalk(time, Date.now(), final_transcript);
+                document.getElementById('result').innerHTML = final_transcript + "</br>" + "시작: "+ time + "/ 끝: "+ Date.now();
+              } else {
+                interim_transcript += event.results[i][0].transcript;
+                document.getElementById('result').innerHTML = interim_transcript
+              }
+            }
+            // document.getElementById('result').innerHTML = "중간값: "+interim_transcript+"<br/>결과값: "+final_transcript;
+            console.log('interim: '+interim_transcript+" | final: "+final_transcript);
+          }
+          this.disabled = true; //시작버튼 이제 사용불가
+          document.getElementById('btn-stop-recording').disabled = false; //종료버튼 활성화
+          // 타이머 화면 표시를 위한 함수
+          updateTime(0,0,0,0);
+        }
+        // 녹음 종료버튼
+        document.getElementById('btn-stop-recording').onclick = function() {
+          //mediaRecorder.stop();
+          if (annyang) {
+            annyang.abort(); //안냥 멈춤
+          } else {
+           alert("서비스 사용 불가 브라우저");
+          }
+          this.disabled = true; //종료버튼 사용불가
+          document.getElementById('btn-start-recording').disabled = false; //시작버튼 활성화이긴 하나 추후에는 리다이렉트하겟지?
+          // 타이머 화면 표시를 위한 함수
+          if(timeUpdate) clearInterval(timeUpdate);
+          setStopwatch(0,0,0,0);
+        }
+      } else {
+        alert("서비스 사용 불가 브라우저");
+      }
+
+      function printMeetingInfo() {
+        var settings = {
+          crossDomain: true,
+          url: "https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/meet/result?mid="+mid,
+          type: "GET",
+          contentType: "application/json"
         }
 
+        $.ajax(settings)
+          .done(function (response) {
+            console.log(response);
 
+            //mname
+            $("#mname").text(response.mname);
 
-        this.disabled = true; //시작버튼 이제 사용불가
-        document.getElementById('btn-stop-recording').disabled = false; //종료버튼 활성화
-        // 타이머 화면 표시를 위한 함수
-        updateTime(0,0,0,0);
+            //memo
+            $("#memo").text(response.memo);
+
+            //date+where
+            var dt = new Date(response.date);
+            $("#date").text(dt.getFullYear()+"-"+dt.getMonth()+"-"+dt.getDate());
+            $("#date_time").text(dt.getHours()+"시 "+dt.getMinutes()+"분");
+            // where
+            $("#where").text(response.where);
+
+            //made
+            if(response.made.unum != unum){
+              $("#forMade").hide();
+            }
+          })
+          .fail(function () {
+            alert('fail');
+          });
       }
 
+      function sendTalk(s,e,t) {
 
-      // 종료버튼
-      document.getElementById('btn-stop-recording').onclick = function() {
-        //mediaRecorder.stop();
-        if (annyang) {
-          annyang.abort(); //안냥 멈춤
-        } else {
-         alert("서비스 사용 불가 브라우저");
-        }      
-        this.disabled = true; //종료버튼 사용불가
-        document.getElementById('btn-start-recording').disabled = false; //시작버튼 활성화이긴 하나 추후에는 리다이렉트하겟지?
-        // 타이머 화면 표시를 위한 함수
-        if(timeUpdate) clearInterval(timeUpdate);
-        setStopwatch(0,0,0,0);
-      }
-
-
-      function sendTalk(time, talk) {
-       // alert(time);
-       // alert(talk);
-
-       var settings = {
-         crossDomain: true,
-         url: `https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/meet/meeting`,
-         type: "POST",
-         contentType: "application/json",
-           data: `{
-             "unum": ${unum},
-             "mnum": ${mnum},
-             "talk": [${time}, "${talk}"]
-           }`
+        var settings = {
+          crossDomain: true,
+          url: `https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/meet/talk`,
+          type: "POST",
+          contentType: "application/json",
+          data: `{
+            "mid": "${mid}",
+            "talk": [${unum}, ${s}, ${e}, "${t}"]
+          }`
         }
-
-       $.ajax(settings)
-         .done(function (response) {
-           if(reponse.message) {
-             alert("error there");
-           }
-         })
-         .fail(function() {});
+        $.ajax(settings)
+          .done(function (response) {
+            if(response.message) {
+              alert("error there");
+            }
+          })
+          .fail(function() {});
       }
-
-
       // 타이머 업데이트 Update time in stopwatch periodically - every 25ms
       function updateTime(prev_hours, prev_minutes, prev_seconds, prev_milliseconds){
           var startTime = new Date();    // fetch current time
-          
+
           timeUpdate = setInterval(function () {
               var timeElapsed = new Date().getTime() - startTime.getTime();    // calculate the time elapsed in milliseconds
-              
-              // calculate hours                
+
+              // calculate hours
               hours = parseInt(timeElapsed / 1000 / 60 / 60) + prev_hours;
-              
+
               // calculate minutes
               minutes = parseInt(timeElapsed / 1000 / 60) + prev_minutes;
               if (minutes > 60) minutes %= 60;
-              
+
               // calculate seconds
               seconds = parseInt(timeElapsed / 1000) + prev_seconds;
               if (seconds > 60) seconds %= 60;
-              
-              // calculate milliseconds 
+
+              // calculate milliseconds
               milliseconds = timeElapsed + prev_milliseconds;
               if (milliseconds > 1000) milliseconds %= 1000;
-              
+
               // set the stopwatch
               setStopwatch(hours, minutes, seconds, milliseconds);
-              
-          }, 25); // update time in stopwatch after every 25ms
-          
-      }
 
+          }, 25); // update time in stopwatch after every 25ms
+
+      }
       // Set the time in stopwatch
       function setStopwatch(hours, minutes, seconds, milliseconds){
           $("#hours").html(prependZero(hours, 2));
@@ -420,13 +437,11 @@
           $("#seconds").html(prependZero(seconds, 2));
           $("#milliseconds").html(prependZero(milliseconds, 3));
       }
-
       // Prepend zeros to the digits in stopwatch
       function prependZero(time, length) {
           time = new String(time);    // stringify time
           return new Array(Math.max(length - time.length + 1, 0)).join("0") + time;
       }
-
     //   })
     //   .catch(function(err) {
     //     console.log('The following error occurred: ' + err);
@@ -434,32 +449,28 @@
     // } else{
     //   alert('We are not support this browser.');
     // }
-
     //
-      function sendData(blob, startTime) {
-        try{
-          var reader = new FileReader();
-          reader.readAsDataURL(blob);
-          reader.onloadend = function() {
-              var base64data = reader.result; //음성파일을 base64(스트링)로 인코딩
-              var base64 = base64data.split(',')[1]; //불필요한 정보 제거
 
-              var d = {
-                'groupid': 1, //내 회의그룹
-                'userid': 'hihi', //내 아이디 , 이 2개의 정보는 나중에 받아오는거 사용
-                'start': startTime,
-                'data': base64
-              };
-              d = JSON.stringify(d);
+      function endMeeting(){
 
-              var xhr = new XMLHttpRequest();
-              xhr.open('POST', '/');
-              xhr.setRequestHeader('Content-Type', "application/json");
-              xhr.send(d);
-          }
-        } catch(exception){
-          alert(exception)
+        var num_cluster = $("#num").val();
+
+        var settings = {
+          crossDomain: true,
+          url: "https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/meet/end?mid="+mid+"&num_cluster="+num_cluster,
+          type: "GET",
+          contentType: "application/json"
         }
+
+        alert(settings.url)
+
+        $.ajax(settings)
+          .done(function (response) {
+            alert("success!");
+          })
+          .fail(function () {
+            alert('fail');
+          });
       }
     </script>
 
