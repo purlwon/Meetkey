@@ -210,7 +210,6 @@
                           <br />
 
                           <div class="text-right mtop20">
-                            <input type=text id="unum"></input>
                             <input type="submit" value="회의 제출" onclick="sendTalk();" class="btn btn-sm btn-primary">
                           </div>
                         </div>
@@ -273,25 +272,6 @@
         }
       });
       */
-
-      function createAudioElement(blobUrl) {
-          const downloadEl = document.createElement('a');
-          downloadEl.style = 'display: block';
-          downloadEl.innerHTML = 'download';
-          downloadEl.download = 'audio.wav';
-          downloadEl.href = blobUrl;
-          const audioEl = document.createElement('audio');
-          audioEl.controls = true;
-          const sourceEl = document.createElement('source');
-          sourceEl.src = blobUrl;
-          sourceEl.type = 'audio/wav';
-          audioEl.appendChild(sourceEl);
-          // document.body.appendChild(audioEl);
-          // document.body.appendChild(downloadEl);
-          // var element = document.getElementById("recordDetail");
-          // element.appendChild(audioEl);
-          // element.appendChild(downloadEl);
-      }
 
       if (annyang) {
 
