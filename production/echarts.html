@@ -692,6 +692,8 @@
     <script src="../vendors/echarts/map/js/world.js"></script>
     <!-- jQuery custom content scroller -->
     <script src="../vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+    <!-- DateJS -->
+    <script src="../vendors/DateJS/build/date.js"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.js"></script>
@@ -729,11 +731,14 @@
           $("#mname").text(response.mname);
 
           // date + time
-          var dt = new Date(response.date);
+          var dt = new Date(response.date).addHours(-9).addMonths(1);
           $("#date").text(dt.getMonth()+"/"+dt.getDate()+"/"+dt.getFullYear());
           $("#time").text(dt.getHours()+":"+dt.getMinutes());
           // where
           $("#where").text(response.where);
+
+          //time_all
+          $("#time_all").text(TimeAll2String(response.time_all))
 
           //keyword
           var keyword = response.keyword

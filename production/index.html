@@ -236,8 +236,7 @@
             console.log(response)
             var data = response.data;
             for(var i=0;i<data.length;i++) {
-              var dt = new Date(data[i].date);
-              var time = new Date(data[i].time_all);
+              var dt = new Date(data[i].date).addHours(-9).addMonths(1);
               var panel = `
                 <div class="x_panel">
                   <div class="row x_title">
