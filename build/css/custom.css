@@ -1,16 +1,16 @@
 
 html , body{
-	
+
  min-height:100%;
- 
+
 }
- 
+
 .full-width {
-	
+
  width:100%;
- 
+
  }
- 
+
 .full-height{
  height:100%;
  }
@@ -1661,7 +1661,7 @@ h5.graph_title i {
 }
 span.right {
     float: right;
-    
+
 }
 .tile_info a {
     text-overflow: ellipsis
@@ -3594,8 +3594,8 @@ image - card background
 .service-box {
   position: absolute;
   z-index: 2;
-  height: 100%;    
-  width: 100%;  
+  height: 100%;
+  width: 100%;
   top:0;
 
 }
@@ -3610,7 +3610,7 @@ image - card background
   font-size: 4rem;
   color: white;
   text-align: center;
-  padding: 80px 20px 20px 20px;  
+  padding: 80px 20px 20px 20px;
 }
 
 .service-box-detail {
@@ -3625,7 +3625,7 @@ image - card background
   color: white;
   text-align: center;
   word-wrap: break-word;
-  padding: 60px 20px 90px 20px;  
+  padding: 60px 20px 90px 20px;
 }
 
 /*
@@ -4691,7 +4691,7 @@ ul.notifications {
 table thead .checkbox { margin-top:-7px;margin-top:-21px; }
 table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 */
-			
+
 .daterangepicker.xdisplay { width:228px; }
 
 .dataTables_wrapper > .row{
