@@ -273,9 +273,9 @@ var setTimePerCluster = function(echartBar, response) {
   var data_name = ['총 소요시간'];
   for(var i=0;i<response.time_per_cluster.length;i++) {
     data.push(response.time_per_cluster[i]);
-    if(i == response.time_per_cluster.length-2) continue;
-    data_sub.push(response.time_per_cluster[i-1]);
     data_name.push('주제'+(i+1));
+    if(i == 0) continue;
+    data_sub.push(response.time_per_cluster[i-1]);
   }
 
   console.log(data);

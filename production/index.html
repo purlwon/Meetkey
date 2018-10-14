@@ -150,6 +150,64 @@
           <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12" id="meeting">
               <!-- history append -->
+              <div class="x_panel">
+                <div class="row x_title">
+                  <div class="col-md-10 col-sm-10 col-xs-12">
+                    <!-- 회의 이름 -->
+                    <h3><strong id="mname">인공지능 회의 분석 서비스</strong></h3>
+                  </div>
+                </div>
+                <div class="dashboard-widget-content">
+                  <ul class="list-unstyled">
+                    <li>
+                      <div class="col-md-2">
+                        <!-- 회의 정보 -->
+                        <h4><label >회의 일시</label></h4>
+                        <h4>
+                          <span id="date">2018-09-05</span>
+                          <span id="time">11시 15분</span>
+                        </h4>
+                        <h4><label>회의 장소</label></h4>
+                        <h4><span id="where">한이음</span></h4>
+                        <h4><label>총 회의 시간</label></h4>
+                        <h4><span id="time_all">9분 1초</span></h4>
+                        <h4><label>회의 메모</label></h4>
+                        <h4><span id="memo">인공지능 회의 분석 서비스 밋키입니다.</span></h4>
+                      </div>
+                      <div class="col-md-5">
+                        <!-- 회의 클러스터 -->
+                        <ul class="list-unstyled timeline" id="sum_cluster${i}">
+                          <li>
+                            <div class="block">
+                              <div class="tags">
+                                <a href="" class="tag">
+                                  <span>주제1</span>
+                                </a>
+                              </div>
+                              <div class="block_content">
+                                <h2 class="title">
+                                    <!-- <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a> -->
+                                </h2>
+                                <!-- <div class="byline">
+                                  <span>13 hours ago</span> by <a>Jane Smith</a>
+                                </div> -->
+                                  <p>
+                                    밋키는 회의 내용을 자동적-효율적으로 의미 있는 분석 정보를 도출해 줌으로써 업무진행에 도움이 되고자 합니다
+                                  </p>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-md-5">
+                        <!-- 회의 시간 차트 -->
+                        <div id="echart_bar_horizontal" style="height:300px;"></div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="clearfix"></div>
+              </div>
             </div>
           </div>
 
@@ -208,6 +266,14 @@
         printMyInfo();
         printWidget();
         printMeetingInfo();
+
+        var meeting = {
+          time_all: 556874,
+          time_per_cluster: [556874]
+        }
+        // time_per_cluster
+        var echartCluster = echarts.init(document.getElementById("echart_bar_horizontal"), theme);
+        setTimePerCluster(echartCluster, meeting);
       });
       function printWidget() {
         var date = new Date();
