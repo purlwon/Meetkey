@@ -157,7 +157,7 @@
                           <th style="width: 20%">전체 텍스트 다운로드</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody id="table_body">
                         <tr>
                           <td>
                             <!-- 회의 주제가 띄워지고 클릭 시 해당 회의 분석 페이지로 이동해야해용 -->
@@ -306,7 +306,7 @@
 
         var settings = {
           crossDomain: true,
-          url: "https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/meet/info?unum="+unum+"&done=false",
+          url: "https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/meet/info?unum="+unum+"&done=true",
           type: "GET",
           contentType: "application/json"
         }
@@ -319,7 +319,7 @@
               console.log(response);
               // data = [{"member":{}, "_id":string, "mname":string, "date":date+time, "where":string, "made":unum, "memo":string}]
               var data = response.data;
-              var meetTable = $('#meetingBody');
+              var meetTable = $('#table_body');
               for(var i=0;i<data.length;i++){
                 var member = data[i].member_raw;
                 var list_inline = ""
@@ -334,39 +334,25 @@
                 var tr = `
                   <tr>
                     <td>${data[i].mname}</td>
-                    <td><small>${date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate()+" "+date.getHours()+":"+date.getMinutes()}</small></td>
                     <td>
-                    <ul class="list-inline">
-                      ${list_inline}
-                    </ul>
+                      <small>${date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate()+" "+date.getHours()+":"+date.getMinutes()}</small>
                     </td>
+                    <td>
+                      <ul class="list-inline">
+                        ${list_inline}
+                      </ul>
+                    </td>
+                    <td>
+                      <a href="chat.html?mid=${data[i]["_id"]}">확인하기</a><!--해당 회의에 맞는 채팅 페이지로 동적 이동-->
+                    </td>
+                    <td>
+                      <a href="#"><!--DB에서 해당파일 동적으로 가져오는 링크 -->
+                        <i class="fa fa-file-text-o"></i>
+                        ${data[i].mname}.txt<!--전체 텍스트 파일 이름.형식-->
+                      </a>
+                    </td>
+                  </tr>
                 `
-                if(data[i].made.unum == unum) {
-                  tr += `
-                    <td style="text-align: center;">
-                      <!-- 최의 개최자일 경우 btn-info 클래스 -->
-                      <!-- 버튼의 링크는 해당 회의 정보가 들어가있는 회의 시작화면 -->
-                      <button type="button" onclick="startMeeting('${data[i]["_id"]}', true)" class="btn btn-info btn-xs">시작</button>
-                    </td>
-                  </tr>
-                  `
-                } else if(data[i].start == true){
-                  tr += `
-                    <td style="text-align: center;">
-                      <!-- 회의 참가자일경우 btn-dark 클래스 -->
-                      <button type="button" onclick="startMeeting('${data[i]["_id"]}', false)" class="btn btn-dark btn-xs">참가</button>
-                    </td>
-                  </tr>
-                  `
-                } else if(data[i].start == false){
-                  tr += `
-                    <td style="text-align: center;">
-                      <!-- 회의 시작 시간 전 - 버튼 속성 disabled -->
-                      <button type="button" disabled onclick="startMeeting('${data[i]["_id"]}', false)" class="btn btn-dark btn-xs">참가</button>
-                    </td>
-                  </tr>
-                  `
-                }
                 meetTable.append(tr);
               }
             }

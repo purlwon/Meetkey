@@ -249,11 +249,10 @@
     <script>
       // 쿠키없으면 그냥 1로 설정
       var unum = getCookie('unum')? getCookie('unum'): 1;
-      if(!mid) {
-        var mid = "5bb07e5f5fb2b0661d0f6e8b";
-      }
+      var mid = "";
 
       $(document).ready(function(){
+        mid = parent.document.URL.substring(parent.document.URL.indexOf('=')+1, parent.document.URL.length);
         printMyInfo();
         printTalk();
       });
@@ -278,11 +277,12 @@
 
             // member
             for(var i=0;i<member_raw.length;i++) {
+              var img = member[member_raw[i]].uimage? member[member_raw[i]].uimage: "images/user.png";
               var li = `
                 <li>
                   <a>
                     <span class="image">
-                      <img src="images/img.jpg" alt="img">
+                      <img src=${img} alt="img">
                     </span>
                     <span>
                       <span>${member[member_raw[i]].uname}</span>
@@ -297,6 +297,7 @@
             // talk
             for(var i=0;i<cluster.length;i++){
               for(var j=0;j<cluster[i].length;j++){
+                var img = member[cluster[i][j][0]].uimage? member[cluster[i][j][0]].uimage: "images/user.png";
                 if(cluster[i][j][0] == unum) {
                   var talk = `
                     <!-- 회의록 right=나 -->
@@ -307,7 +308,7 @@
                         <span class="direct-chat-timestamp left">23 Jan 2:05 pm</span>
                       </div>
                       <!-- /.direct-chat-info -->
-                      <img class="direct-chat-img" src="images/picture.jpg" alt="message user image">
+                      <img class="direct-chat-img" src=${img} alt="message user image">
                       <!-- /.direct-chat-img -->
                       <div class="direct-chat-text">
                         ${cluster[i][j][1]}
@@ -327,7 +328,7 @@
                         <span class="direct-chat-timestamp right">23 Jan 2:00 pm</span><!--타임스탬프-->
                       </div>
                       <!-- /.direct-chat-info -->
-                      <img class="direct-chat-img" src="images/img.jpg" alt="message user image"><!--참여자 프로필사진-->
+                      <img class="direct-chat-img" src=${img} alt="message user image"><!--참여자 프로필사진-->
                       <!-- /.direct-chat-img -->
                       <div class="direct-chat-text">
                         ${cluster[i][j][1]}
