@@ -54,11 +54,11 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="images/user.png" alt="..." class="img-circle profile_img" id="menu_img">
               </div>
               <div class="profile_info">
-                <span>(주)한이음/웹팀</span>
-                <h2>황채원</h2>
+                <span id="menu_info"></span>
+                <h2 id="menu_name"></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -111,7 +111,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt="">황채원
+                    <img src="images/user.png" id="bar_img"><span id="bar_name">황채원</span>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -200,14 +200,13 @@
     <script src="./js/setChart.js"></script>
 
     <script type="text/javascript">
-      if(!getCookie('unum')) {
-        document.cookie = "unum=1;max-age=60*60*24*3";
-        var unum=1;
-      }
+
+      var unum = getCookie('unum')? getCookie('unum'): 1;
       if(!mid) {
         var mid = "5bb07e5f5fb2b0661d0f6e8b";
       }
       $(document).ready(function(){
+        printMyInfo();
         printWidget();
         printMeetingInfo();
       });
