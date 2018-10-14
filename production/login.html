@@ -23,84 +23,84 @@
   </head>
 
   <body class="login">
-    <div>
-      <a class="hiddenanchor" id="signup"></a>
-      <a class="hiddenanchor" id="signin"></a>
 
-      <div class="login_wrapper">
+    <a class="hiddenanchor" id="signup"></a>
+    <a class="hiddenanchor" id="signin"></a>
 
-          <div class="animate login-box form login_form card">
-            <div class="row" style="background-color: white; ">
-              <div class="col-sm-6 image-card-body " >
-                <div class="sv-container">
-                  <div class="sv-carousel-caption">
-                    <h1 class="service-box-msg">Welcome to Meetkey!</h1>
-                    <p class="service-box-detail">
-                      <span>인공지능 기반의 회의 분석 서비스<br><strong>밋키</strong>입니다 <br>
-                        <br>
-                      밋키는 회의 내용을 자동적·효율적으로 <br>의미 있는 분석 정보를 도출해 줌으로써 <br>업무진행에 도움이 되고자 합니다</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <section class="login_content">
-                  <div class="row">
-                    <div class="col-xs-4">
-                    </div>
-                    <div class="col-xs-4">
-                      <img src="images/MeetKey_logo3.png" alt="..." class="" style="max-width: 100%; max-height: 100%">
-                    </div>
-                    <div class="col-xs-4">
-                    </div>
-                  </div>
-                  <br>
-                  <div class="row">
-                    <div class="col-xs-3">
-                    </div>
-                    <div class="col-xs-6">
-                      <img src="images/MeetKey_text.png" alt="..." style="max-width: 100%; max-height: 100%">
-                      <!-- <span>Meetkey</span> -->
-                    </div>
-                    <div class="col-xs-3">
-                    </div>
-                  </div>
-                  <form>
-                    <h4>Login Form</h4>
-                    <div>
-                      <input type="text" class="form-control" placeholder="ID" required="" />
-                    </div>
-                    <div>
-                      <input type="password" class="form-control" placeholder="Password" required="" />
-                    </div>
-                    <div>
-                      <a class="btn btn-default submit" href="index.html">Log in</a>
-                      <a class="reset_pass" href="#">Lost your password?</a>
-                    </div>
-
-                    <div class="clearfix"></div>
-
-                    <div class="separator">
-                      <p class="change_link">New to site?
-                        <a href="#signup" class="to_register"> Create Account </a>
-                      </p>
-
-                      <div class="clearfix"></div>
-                      <br />
-
-                      
-                    </div>
-                  </form>
-                </section>
+    <div class="login_wrapper">
+      <div class="animate login-box form login_form card">
+        <div class="row" style="background-color: white; ">
+          <div class="col-sm-6 image-card-body " >
+            <div class="sv-container">
+              <div class="sv-carousel-caption">
+                <h1 class="service-box-msg">Welcome to Meetkey!</h1>
+                <p class="service-box-detail">
+                  <span>인공지능 기반의 회의 분석 서비스<br><strong>밋키</strong>입니다 <br>
+                    <br>
+                  밋키는 회의 내용을 자동적·효율적으로 <br>의미 있는 분석 정보를 도출해 줌으로써 <br>업무진행에 도움이 되고자 합니다</span>
+                </p>
               </div>
             </div>
           </div>
+          <div class="col-sm-6">
+            <section class="login_content">
+              <div class="row">
+                <div class="col-xs-4">
+                </div>
+                <div class="col-xs-4">
+                  <img src="images/MeetKey_logo3.png" alt="..." class="" style="max-width: 100%; max-height: 100%">
+                </div>
+                <div class="col-xs-4">
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-xs-3">
+                </div>
+                <div class="col-xs-6">
+                  <img src="images/MeetKey_text.png" alt="..." style="max-width: 100%; max-height: 100%">
+                  <!-- <span>Meetkey</span> -->
+                </div>
+                <div class="col-xs-3">
+                </div>
+              </div>
+              <form>
+                <h4>Login Form</h4>
+                <div>
+                  <input type="text" class="form-control" placeholder="ID" required="" id="id"/>
+                </div>
+                <div>
+                  <input type="password" class="form-control" placeholder="Password" required="" id="pw" />
+                </div>
+                <div>
+                  <a class="btn btn-default submit" onclick="login()">Log in</a>
+                  <a class="reset_pass" href="#">Lost your password?</a>
+                </div>
 
-        <div id="register" class="animate register-box form registration_form card">
-          <div class="row" style="background-color: white">
+                <div class="clearfix"></div>
+
+                <div class="separator">
+                  <p class="change_link">New to site?
+                    <a href="#signup" class="to_register"> Create Account </a>
+                  </p>
+
+                  <div class="clearfix"></div>
+                  <br />
+                </div>
+              </form>
+            </section>
+          </div>
+        </div> <!-- row -->
+      </div> <!-- animate1 login-box form login_form card -->
+
+  <!-- =========================================================================== -->
+
+      <div id="register" class="animate register-box form registration_form card">
+        <section class="login_content" style="background-color: white">
+          <!-- 멀티파트폼데이터 - id="mypicture"에 업로드 된 파일 -->
+          <form method="POST" enctype="multipart/form-data">
+        <div class="row" style="background-color: white">
             <div class="col-sm-6">
-              <section class="login_content" >
-                <form>
                   <div class="row">
                     <div class="col-xs-3">
                     </div>
@@ -110,47 +110,52 @@
                           <img src="images/user.png" id="PicturePreview" alt="..." class="picture-src" style="max-width: 100%; max-height: 100%">
                         </div>
                         <label class="btn btn-primary">
-                        Browse&hellip; <input type="file" id="mypicture" style="display: none; " name="mypic">
-                      </label>
+                          <!-- upload file -->
+                          Browse&hellip; <input type="file" id="mypicture" style="display: none;" name="mypic" />
+                        </label>
                       </div>
                     </div>
                     <div class="col-xs-3">
                     </div>
                   </div>
                   <br>
-                  
-                
+                <!-- </form> -->
+
+                <!-- id, password -->
+                <!-- <form data-parsley-validate> -->
                   <h4>Create Account</h4>
                   <div>
-                    <input type="text" class="form-control" placeholder="ID" required="" />
+                    <input type="text" class="form-control" placeholder="ID" required="required" id="id" />
                   </div>
                   <div>
-                    <input type="password" class="form-control" placeholder="Password" required="" />
+                    <input type="password" class="form-control" placeholder="Password" required="required" />
                   </div>
                   <div>
-                    <input type="password" class="form-control" placeholder="Retype password" required="" />
+                    <input type="password" class="form-control" placeholder="Retype password" required="required" id="pw" />
                   </div>
-                </form>
-              </section>
+                <!-- </form> -->
+              <!-- </section> -->
             </div>
+
             <div class="col-sm-6">
-              <section class="login_content" >
-                <form>
+              <!-- <section class="login_content" > -->
+                <!-- name, company, department, position -->
+                <!-- <form data-parsley-validate> -->
                   <h4>Profile</h4>
                   <div>
-                    <input type="email" class="form-control" placeholder="Full name" required="" />
+                    <input type="text" class="form-control" placeholder="Full name" required="required" id="name" />
                   </div>
                   <div>
-                    <input type="email" class="form-control" placeholder="회사명" required="" />
+                    <input type="text" class="form-control" placeholder="회사명" required="required" id="company" />
                   </div>
                   <div>
-                    <input type="email" class="form-control" placeholder="부서" required="" />
+                    <input type="text" class="form-control" placeholder="부서" required="required" id="department" />
                   </div>
                   <div>
-                    <input type="email" class="form-control" placeholder="직책" required="" />
+                    <input type="text" class="form-control" placeholder="직책" required="required" id="position" />
                   </div>
                   <div>
-                    <a class="btn btn-default submit" href="index.html">Submit</a>
+                    <button type="submit" class="btn btn-default submit" >회원가입</button>
                   </div>
 
                   <div class="clearfix"></div>
@@ -163,21 +168,23 @@
                     <div class="clearfix"></div>
                     <br />
 
-                    
                   </div>
-                </form>
-              </section>
+
+
             </div>
-          </div>
-        </div>
-        <!-- register -->
-      </div>
-    </div>
+          </div> <!-- row -->
+        </form>
+        </section>
+        </div> <!-- animate2 login-box form login_form card -->
+
+      </div> <!-- login_wrapper -->
 
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Parsley -->
+    <script src="../vendors/parsleyjs/dist/parsley.min.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
 
@@ -190,6 +197,7 @@
             readURL(this);
         });
       });
+
       function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -199,7 +207,80 @@
             }
             reader.readAsDataURL(input.files[0]);
         }
-      }  
+      }
+
+      function login(){
+        try {
+
+          var id = $("#id").val();
+          var pw = $("#pw").val();
+
+          var settings = {
+            crossDomain: true,
+            url: "https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/login",
+            type: "POST",
+            contentType: "application/json",
+            data: `{
+              "uid": "${id}",
+              "pw": "${pw}"
+            }`
+          }
+
+          $.ajax(settings)
+            .done(function (response) {
+              console.log(response);
+              document.cookie = `unum=${response.unum}`;
+              alert(document.cookie);
+              window.location.replace("index.html");
+            })
+            .fail(function () {
+              alert('fail');
+            });
+
+        } catch(err) {
+          alert(err);
+        }
+      }
+
+      // function register(){
+      //   try {
+      //
+      //     var id = $("#id").val();
+      //     var pw = $("#pw").val();
+      //     var name = $("#name").val();
+      //     var company = $("#company").val();
+      //     var department = $("#department").val();
+      //     var position = $("#position").val();
+      //
+      //     var settings = {
+      //       crossDomain: true,
+      //       url: "https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/register",
+      //       type: "POST",
+      //       contentType: "application/json",
+      //       data: `{
+      //         "uid": "${id}",
+      //         "pw": "${pw}",
+      //         "uname": "${name}",
+      //         "company": "${company}",
+      //         "department": "${department}",
+      //         "position": "${position}"
+      //       }`
+      //     }
+      //
+      //     $.ajax(settings)
+      //       .done(function (response) {
+      //         window.location.replace("");
+      //         // 회원 가입 후 위치
+      //
+      //       })
+      //       .fail(function () {
+      //         alert('fail');
+      //       });
+      //
+      //   } catch(err) {
+      //     alert(err);
+      //   }
+      // }
     </script>
   </body>
 </html>

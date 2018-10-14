@@ -46,85 +46,85 @@
             <div class="clearfix"></div>
 
             <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
-              </div>
-              <div class="profile_info">
-                <span>(주)한이음/웹팀</span>
-                <h2>황채원</h2>
-              </div>
+          <div class="profile clearfix">
+            <div class="profile_pic">
+              <img src="images/user.png" alt="..." class="img-circle profile_img" id="menu_img">
             </div>
-            <!-- /menu profile quick info -->
-
-            <br />
-
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <!-- <h3>General</h3> -->
-                <ul class="nav side-menu">
-                  <li><a href="index.html"><i class="fa fa-home"></i> Dashboard </a>
-                  </li>
-                  <li><a><i class="fa fa-bar-chart-o"></i> 회의 분석 <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="echarts.html">지난 회의 결과</a></li>
-                      <li><a href="projects.html">회의록 리스트</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-edit"></i> 회의 관리 <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="form.html">회의 만들기</a></li>
-                      <li><a href="tables_dynamic.html">회의 예약리스트</a></li>
-                      <li><a href="project_detail.html">회의 중(임시)</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="tables.html"><i class="fa fa-group"></i> 친구 관리 </a>
-                  </li>
-                  <li><a href="calendar.html"><i class="fa fa-calendar"></i> 일정 관리 </a>
-                  </li>
-                  <li><a href="profile.html"><i class="fa fa-cog"></i> 개인 설정 </a>
-                  </li>
-                </ul>
-              </div>
-
+            <div class="profile_info">
+              <span id="menu_info"></span>
+              <h2 id="menu_name"></h2>
             </div>
-            <!-- /sidebar menu -->
-
           </div>
-        </div>
+          <!-- /menu profile quick info -->
 
-        <!-- top navigation -->
-        <div class="top_nav">
-          <div class="nav_menu">
-            <nav>
-              <div class="nav toggle">
-                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-              </div>
+          <br />
 
-              <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt="">황채원
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Profile</a></li>
-                    <li>
-                      <a href="javascript:;">
-                        <span class="badge bg-red pull-right">50%</span>
-                        <span>Settings</span>
-                      </a>
-                    </li>
-                    <li><a href="javascript:;">Help</a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+          <!-- sidebar menu -->
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div class="menu_section">
+              <!-- <h3>General</h3> -->
+              <ul class="nav side-menu">
+                <li><a href="index.html"><i class="fa fa-home"></i> Dashboard </a>
+                </li>
+                <li><a><i class="fa fa-bar-chart-o"></i> 회의 분석 <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="echarts.html">지난 회의 결과</a></li>
+                    <li><a href="projects.html">회의록 리스트</a></li>
                   </ul>
                 </li>
+                <li><a><i class="fa fa-edit"></i> 회의 관리 <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="form.html">회의 만들기</a></li>
+                    <li><a href="tables_dynamic.html">회의 예약리스트</a></li>
+                    <li><a href="project_detail.html">회의 중(임시)</a></li>
+                  </ul>
+                </li>
+                <li><a href="tables.html"><i class="fa fa-group"></i> 친구 관리 </a>
+                </li>
+                <li><a href="calendar.html"><i class="fa fa-calendar"></i> 일정 관리 </a>
+                </li>
+                <li><a href="profile.html"><i class="fa fa-cog"></i> 개인 설정 </a>
+                </li>
               </ul>
-            </nav>
+            </div>
+
           </div>
+          <!-- /sidebar menu -->
+
         </div>
-        <!-- /top navigation -->
+      </div>
+
+      <!-- top navigation -->
+      <div class="top_nav">
+        <div class="nav_menu">
+          <nav>
+            <div class="nav toggle">
+              <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+              <li class="">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <img src="images/user.png" id="bar_img"><span id="bar_name">황채원</span>
+                  <span class=" fa fa-angle-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="javascript:;"> Profile</a></li>
+                  <li>
+                    <a href="javascript:;">
+                      <span class="badge bg-red pull-right">50%</span>
+                      <span>Settings</span>
+                    </a>
+                  </li>
+                  <li><a href="javascript:;">Help</a></li>
+                  <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <!-- /top navigation -->
 
         <!-- page content -->
         <div class="right_col" role="main">
@@ -134,7 +134,7 @@
                 <h3>회의 녹음을 시작해주세요 </h3>
               </div>
             </div>
-            
+
             <div class="clearfix"></div>
 
             <div class="row">
@@ -166,12 +166,12 @@
 
                       <div>
                         <h4>발언 기록</h4>
-                        <!-- end of user messages -->  
+                        <!-- end of user messages -->
                         <div class="message_wrapper">
                           <blockquote id="result" class="message">
                             결과가 없습니다.
                           </blockquote>
-                          <br /> 
+                          <br />
                         </div>
                         <!-- end of user messages -->
                       </div>
@@ -198,7 +198,7 @@
                             <p class="title">날짜</p>
                             <p id="date">2018-09-28</p>
                             <p class="title">시간</p>
-                            <p id="time">14:30:20</p>
+                            <p id="date_time">왜안뜨냐 너</p>
                             <p class="title">장소</p>
                             <p id="where">Toz 회의실</p>
                           </div>
@@ -209,9 +209,9 @@
 
                           <br />
 
-                          <div class="text-right mtop20">
-                            <input type=text id="unum"></input>
-                            <input type="submit" value="회의 제출" onclick="sendTalk();" class="btn btn-sm btn-primary">
+                          <div class="text-right mtop20" id="forMade">
+                            <input type=text id="num" placeholder="주제 개수" required></input>
+                            <input type="submit" value="회의 제출" onclick="endMeeting()" class="btn btn-sm btn-primary">
                           </div>
                         </div>
 
@@ -251,28 +251,22 @@
     <script src="../vendors/echarts/dist/echarts.min.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
+    <script src="./js/cookie.js"></script>
     <!-- Annyang -->
     <script src="../vendors/annyang/annyang.js"></script>
     <!-- <script src="usefulFunction.js"></script> -->
     <script type="text/javascript">
 
-      /*
-      const unum = getCookie('unum');
+      // 쿠키없으면 그냥 1로 설정
+      var unum = getCookie('unum')? getCookie('unum'): 1;
+      var mid = "";
 
-      $(document).ready(function(){ 
-
-        if(!unum) {
-          alert('로그인부터~~~');
-          window.location.replace("https://s3.ap-northeast-2.amazonaws.com/elasticbeanstalk-ap-northeast-2-850538120357/views/login.html");
-        } else {
-          if (annyang) {
-            annyang.start({ paused: true });
-          } else {
-            alert("서비스 사용 불가 브라우저");
-          }
-        }
+      $(document).ready(function(){
+        mid = parent.document.URL.substring(parent.document.URL.indexOf('=')+1, parent.document.URL.length);
+        printMyInfo();
+        printMeetingInfo();
       });
-      */
+
 
       function createAudioElement(blobUrl) {
           const downloadEl = document.createElement('a');
@@ -292,21 +286,17 @@
           // element.appendChild(audioEl);
           // element.appendChild(downloadEl);
       }
-
       if (annyang) {
-
         // 시작버튼
         document.getElementById('btn-start-recording').onclick = function() {
             // 타이머 화면 표시를 위한 변수 선언
           var hours = minutes = seconds = milliseconds = 0;
           var prev_hours = prev_minutes = prev_seconds = prev_milliseconds = undefined;
           var timeUpdate;
-
           // startTime = Date.now(); //시작버튼이 눌린 시각 저장 (밀리세컨드)
-
-          // 시작버튼 
+          // 시작버튼
           // Start listening.
-          annyang.start({ autoRestart: true, continuous: true });
+          annyang.start({ autoRestart: true, continuous: false });
           var recognition = annyang.getSpeechRecognizer();
           var final_transcript = '';
           var time = 0;
@@ -320,8 +310,8 @@
             for (var i=event.resultIndex; i<event.results.length;++i) {
               if(event.results[i].isFinal) {
                 final_transcript += event.results[i][0].transcript;
-                makeInfo(time, Date.now(), final_transcript);
-                document.getElementById('result').innerHTML = final_transcript + "</br>" + "시작: "+ time + "/ 끝: "+ Date.now();
+                sendTalk(time, Date.now(), final_transcript);
+                document.getElementById('result').innerHTML = final_transcript;
               } else {
                 interim_transcript += event.results[i][0].transcript;
                 document.getElementById('result').innerHTML = interim_transcript
@@ -330,14 +320,11 @@
             // document.getElementById('result').innerHTML = "중간값: "+interim_transcript+"<br/>결과값: "+final_transcript;
             console.log('interim: '+interim_transcript+" | final: "+final_transcript);
           }
-
           this.disabled = true; //시작버튼 이제 사용불가
           document.getElementById('btn-stop-recording').disabled = false; //종료버튼 활성화
           // 타이머 화면 표시를 위한 함수
-          updateTime(0,0,0,0); 
+          updateTime(0,0,0,0);
         }
-
-
         // 녹음 종료버튼
         document.getElementById('btn-stop-recording').onclick = function() {
           //mediaRecorder.stop();
@@ -345,30 +332,53 @@
             annyang.abort(); //안냥 멈춤
           } else {
            alert("서비스 사용 불가 브라우저");
-          }      
+          }
           this.disabled = true; //종료버튼 사용불가
           document.getElementById('btn-start-recording').disabled = false; //시작버튼 활성화이긴 하나 추후에는 리다이렉트하겟지?
           // 타이머 화면 표시를 위한 함수
           if(timeUpdate) clearInterval(timeUpdate);
           setStopwatch(0,0,0,0);
         }
-
       } else {
         alert("서비스 사용 불가 브라우저");
       }
 
-      var s=0;
-      var e=0;
-      var t="";
-      function makeInfo(start, end, talk){
-        s = start;
-        e = end;
-        t = talk;
+      function printMeetingInfo() {
+        var settings = {
+          crossDomain: true,
+          url: "https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/meet/result?mid="+mid,
+          type: "GET",
+          contentType: "application/json"
+        }
+
+        $.ajax(settings)
+          .done(function (response) {
+            console.log(response);
+
+            //mname
+            $("#mname").text(response.mname);
+
+            //memo
+            $("#memo").text(response.memo);
+
+            //date+where
+            var dt = new Date(response.date);
+            $("#date").text(dt.getFullYear()+"-"+dt.getMonth()+"-"+dt.getDate());
+            $("#date_time").text(dt.getHours()+"시 "+dt.getMinutes()+"분");
+            // where
+            $("#where").text(response.where);
+
+            //made
+            if(response.made.unum != unum){
+              $("#forMade").hide();
+            }
+          })
+          .fail(function () {
+            alert('fail');
+          });
       }
 
-      function sendTalk() {
-        // alert(start, end);
-        // alert(talk);
+      function sendTalk(s,e,t) {
 
         var settings = {
           crossDomain: true,
@@ -376,52 +386,46 @@
           type: "POST",
           contentType: "application/json",
           data: `{
-            "mid": "5bb07e5f5fb2b0661d0f6e8b",
-            "talk": [${document.getElementById("unum").value}, ${s}, ${e}, "${t}"]
+            "mid": "${mid}",
+            "talk": [${unum}, ${s}, ${e}, "${t}"]
           }`
         }
-
         $.ajax(settings)
           .done(function (response) {
             if(response.message) {
               alert("error there");
-            } else {
-              alert("success!");
             }
           })
           .fail(function() {});
       }
-
-
       // 타이머 업데이트 Update time in stopwatch periodically - every 25ms
       function updateTime(prev_hours, prev_minutes, prev_seconds, prev_milliseconds){
           var startTime = new Date();    // fetch current time
-          
+
           timeUpdate = setInterval(function () {
               var timeElapsed = new Date().getTime() - startTime.getTime();    // calculate the time elapsed in milliseconds
-              
-              // calculate hours                
+
+              // calculate hours
               hours = parseInt(timeElapsed / 1000 / 60 / 60) + prev_hours;
-              
+
               // calculate minutes
               minutes = parseInt(timeElapsed / 1000 / 60) + prev_minutes;
               if (minutes > 60) minutes %= 60;
-              
+
               // calculate seconds
               seconds = parseInt(timeElapsed / 1000) + prev_seconds;
               if (seconds > 60) seconds %= 60;
-              
-              // calculate milliseconds 
+
+              // calculate milliseconds
               milliseconds = timeElapsed + prev_milliseconds;
               if (milliseconds > 1000) milliseconds %= 1000;
-              
+
               // set the stopwatch
               setStopwatch(hours, minutes, seconds, milliseconds);
-              
-          }, 25); // update time in stopwatch after every 25ms
-          
-      }
 
+          }, 25); // update time in stopwatch after every 25ms
+
+      }
       // Set the time in stopwatch
       function setStopwatch(hours, minutes, seconds, milliseconds){
           $("#hours").html(prependZero(hours, 2));
@@ -429,7 +433,6 @@
           $("#seconds").html(prependZero(seconds, 2));
           $("#milliseconds").html(prependZero(milliseconds, 3));
       }
-
       // Prepend zeros to the digits in stopwatch
       function prependZero(time, length) {
           time = new String(time);    // stringify time
@@ -442,9 +445,26 @@
     // } else{
     //   alert('We are not support this browser.');
     // }
-
     //
 
+      function endMeeting(){
+
+        var num_cluster = $("#num").val();
+
+        var settings = {
+          crossDomain: true,
+          url: "https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/meet/end?mid="+mid+"&num_cluster="+num_cluster,
+          type: "GET",
+          contentType: "application/json"
+        }
+
+        $.ajax(settings)
+          .done(function (response) {
+          })
+          .fail(function () {
+            alert('fail');
+          });
+      }
     </script>
 
   </body>

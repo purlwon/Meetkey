@@ -19,7 +19,7 @@
     <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.css" rel="stylesheet">
+    <link href="../build/css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -46,85 +46,85 @@
             <div class="clearfix"></div>
 
             <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
-              </div>
-              <div class="profile_info">
-                <span>(주)한이음/웹팀</span>
-                <h2>황채원</h2>
-              </div>
+          <div class="profile clearfix">
+            <div class="profile_pic">
+              <img src="images/user.png" alt="..." class="img-circle profile_img" id="menu_img">
             </div>
-            <!-- /menu profile quick info -->
-
-            <br />
-
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <!-- <h3>General</h3> -->
-                <ul class="nav side-menu">
-                  <li><a href="index.html"><i class="fa fa-home"></i> Dashboard </a>
-                  </li>
-                  <li><a><i class="fa fa-bar-chart-o"></i> 회의 분석 <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="echarts.html">지난 회의 결과</a></li>
-                      <li><a href="projects.html">회의록 리스트</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-edit"></i> 회의 관리 <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="form.html">회의 만들기</a></li>
-                      <li><a href="tables_dynamic.html">회의 예약리스트</a></li>
-                      <li><a href="project_detail.html">회의 중(임시)</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="tables.html"><i class="fa fa-group"></i> 친구 관리 </a>
-                  </li>
-                  <li><a href="calendar.html"><i class="fa fa-calendar"></i> 일정 관리 </a>
-                  </li>
-                  <li><a href="profile.html"><i class="fa fa-cog"></i> 개인 설정 </a>
-                  </li>
-                </ul>
-              </div>
-
+            <div class="profile_info">
+              <span id="menu_info"></span>
+              <h2 id="menu_name"></h2>
             </div>
-            <!-- /sidebar menu -->
-
           </div>
-        </div>
+          <!-- /menu profile quick info -->
 
-        <!-- top navigation -->
-        <div class="top_nav">
-          <div class="nav_menu">
-            <nav>
-              <div class="nav toggle">
-                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-              </div>
+          <br />
 
-              <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt="">황채원
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Profile</a></li>
-                    <li>
-                      <a href="javascript:;">
-                        <span class="badge bg-red pull-right">50%</span>
-                        <span>Settings</span>
-                      </a>
-                    </li>
-                    <li><a href="javascript:;">Help</a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+          <!-- sidebar menu -->
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div class="menu_section">
+              <!-- <h3>General</h3> -->
+              <ul class="nav side-menu">
+                <li><a href="index.html"><i class="fa fa-home"></i> Dashboard </a>
+                </li>
+                <li><a><i class="fa fa-bar-chart-o"></i> 회의 분석 <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="echarts.html">지난 회의 결과</a></li>
+                    <li><a href="projects.html">회의록 리스트</a></li>
                   </ul>
                 </li>
+                <li><a><i class="fa fa-edit"></i> 회의 관리 <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="form.html">회의 만들기</a></li>
+                    <li><a href="tables_dynamic.html">회의 예약리스트</a></li>
+                    <li><a href="project_detail.html">회의 중(임시)</a></li>
+                  </ul>
+                </li>
+                <li><a href="tables.html"><i class="fa fa-group"></i> 친구 관리 </a>
+                </li>
+                <li><a href="calendar.html"><i class="fa fa-calendar"></i> 일정 관리 </a>
+                </li>
+                <li><a href="profile.html"><i class="fa fa-cog"></i> 개인 설정 </a>
+                </li>
               </ul>
-            </nav>
+            </div>
+
           </div>
+          <!-- /sidebar menu -->
+
         </div>
-        <!-- /top navigation -->
+      </div>
+
+      <!-- top navigation -->
+      <div class="top_nav">
+        <div class="nav_menu">
+          <nav>
+            <div class="nav toggle">
+              <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+              <li class="">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <img src="images/user.png" id="bar_img"><span id="bar_name">황채원</span>
+                  <span class=" fa fa-angle-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="javascript:;"> Profile</a></li>
+                  <li>
+                    <a href="javascript:;">
+                      <span class="badge bg-red pull-right">50%</span>
+                      <span>Settings</span>
+                    </a>
+                  </li>
+                  <li><a href="javascript:;">Help</a></li>
+                  <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <!-- /top navigation -->
 
         <!-- page content -->
         <div class="right_col" role="main">
@@ -133,112 +133,42 @@
               <div class="title_left">
                 <h3>회의 예약 리스트 </h3>
               </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
-            
+
             <div class="clearfix"></div>
 
             <div class="row">
               <div class="col-md-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h4><i class="fa fa-bell"></i> 예정된 회의 목록</h4>
+                    <h2>예정된 회의 목록</h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
 
                     <!-- start project list -->
-                    <table class="table table-striped table-hover projects">
+                    <table class="table table-striped table-hover projects" id="meeting">
                       <thead>
                         <tr>
                           <th style="width: 20%">회의 주제</th>
                           <th style="width: 20%">회의 일시</th>
                           <th>회의 참여자</th>
                           <th style="width: 8%; text-align: center;">시작/참가</th>
-                        </tr>
+                       </tr>
                       </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            <a>회의 주제 1번입니다.</a>
-                          </td>
-                          <td>
-                            <small>2018-09-29</small>
-                            <small>14:09:28</small>
-                          </td>
-                          <td>
-                            <ul class="list-inline">
-                              <li>오정현
-                                <!-- <img src="images/user.png" class="avatar" alt="Avatar"> -->
-                              </li>
-                              <li>조수현
-                                <!-- <img src="images/user.png" class="avatar" alt="Avatar"> -->
-                              </li>
-                              <li>송규빈
-                                <!-- <img src="images/user.png" class="avatar" alt="Avatar"> -->
-                              </li>
-                              <li>곽현민
-                                <!-- <img src="images/user.png" class="avatar" alt="Avatar"> -->
-                              </li>
-                              <li>황채원
-                                <!-- <img src="images/user.png" class="avatar" alt="Avatar"> -->
-                              </li>
-                            </ul>
-                          </td>
-                          <td style="text-align: center;">
-                            <!-- 최의 개최자일 경우 btn-info 클래스 -->
-                            <!-- 버튼의 링크는 해당 회의 정보가 들어가있는 회의 시작화면 -->
-                            <button type="button" onclick="location.href='project_detail.html'" class="btn btn-info btn-xs">시작</button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <a>회의 주제 2번입니다.</a>
-                          </td>
-                          <td>
-                            <small>2018-09-29</small>
-                            <small>14:09:28</small>
-                          </td>
-                          <td>
-                            <ul class="list-inline">
-                              <li>조수현
-                                <!-- <img src="images/user.png" class="avatar" alt="Avatar"> -->
-                              </li>
-                              <li>곽현민
-                                <!-- <img src="images/user.png" class="avatar" alt="Avatar"> -->
-                              </li>
-                            </ul>
-                          </td>
-                          <td style="text-align: center;">
-                            <!-- 회의 참가자일경우 btn-dark 클래스 -->
-                            <button type="button" onclick="location.href='project_detail.html'" class="btn btn-dark btn-xs">참가</button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <a>회의 주제 3번입니다.</a>
-                          </td>
-                          <td>
-                            <small>2018-09-29</small>
-                            <small>14:09:28</small>
-                          </td>
-                          <td>
-                            <ul class="list-inline">
-                              <li>황채원
-                                <!-- <img src="images/user.png" class="avatar" alt="Avatar"> -->
-                              </li>
-                              <li>오정현
-                                <!-- <img src="images/user.png" class="avatar" alt="Avatar"> -->
-                              </li>
-                              <li>송규빈
-                                <!-- <img src="images/user.png" class="avatar" alt="Avatar"> -->
-                              </li>
-                            </ul>
-                          </td>
-                          <td style="text-align: center;">
-                            <!-- 회의 시작 시간 전 - 버튼 속성 disabled -->
-                            <button type="button" disabled onclick="location.href='project_detail.html'" class="btn btn-info btn-xs">시작</button>
-                          </td>
-                        </tr>
+                      <tbody id=meetingBody>
+                        <!-- list -->
                       </tbody>
                     </table>
                     <!-- end project list -->
@@ -254,7 +184,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Copyright &copy; 2018 Meetkey. All rights reserved.
+            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
           </div>
           <div class="clearfix"></div>
         </footer>
@@ -272,8 +202,116 @@
     <script src="../vendors/nprogress/nprogress.js"></script>
     <!-- bootstrap-progressbar -->
     <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-    
+
     <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.js"></script>
+    <script src="../build/js/custom.min.js"></script>
+    <script src="./js/cookie.js"></script>
+
+    <script>
+      // 쿠키없으면 그냥 1로 설정
+      var unum = getCookie('unum')? getCookie('unum'): 1;
+
+      $(document).ready(function(){
+        printMyInfo();
+        printBookedMeetingList();
+      });
+
+      function printBookedMeetingList() {
+
+        var settings = {
+          crossDomain: true,
+          url: "https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/meet/info?unum="+unum+"&done=false",
+          type: "GET",
+          contentType: "application/json"
+        }
+
+        $.ajax(settings)
+          .done(function (response) {
+            if('message' in response) {
+              alert(response.message)
+            } else {
+              console.log(response);
+              // data = [{"member":{}, "_id":string, "mname":string, "date":date+time, "where":string, "made":unum, "memo":string}]
+              var data = response.data;
+              var meetTable = $('#meetingBody');
+              for(var i=0;i<data.length;i++){
+                var member = data[i].member_raw;
+                var list_inline = ""
+                for(var j=0;j<member.length;j++){
+                  list_inline += `
+                    <li>${data[i].member[member[j]].uname}
+                      <!-- <img src="images/user.png" class="avatar" alt="Avatar"> -->
+                    </li>
+                  `
+                }
+                var date = new Date(data[i].date);
+                var tr = `
+                  <tr>
+                    <td>${data[i].mname}</td>
+                    <td><small>${date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate()+" "+date.getHours()+":"+date.getMinutes()}</small></td>
+                    <td>
+                    <ul class="list-inline">
+                      ${list_inline}
+                    </ul>
+                    </td>
+                `
+                if(data[i].made.unum == unum) {
+                  tr += `
+                    <td style="text-align: center;">
+                      <!-- 최의 개최자일 경우 btn-info 클래스 -->
+                      <!-- 버튼의 링크는 해당 회의 정보가 들어가있는 회의 시작화면 -->
+                      <button type="button" onclick="startMeeting('${data[i]["_id"]}', true)" class="btn btn-info btn-xs">시작</button>
+                    </td>
+                  </tr>
+                  `
+                } else if(data[i].start == true){
+                  tr += `
+                    <td style="text-align: center;">
+                      <!-- 회의 참가자일경우 btn-dark 클래스 -->
+                      <button type="button" onclick="startMeeting('${data[i]["_id"]}', false)" class="btn btn-dark btn-xs">참가</button>
+                    </td>
+                  </tr>
+                  `
+                } else if(data[i].start == false){
+                  tr += `
+                    <td style="text-align: center;">
+                      <!-- 회의 시작 시간 전 - 버튼 속성 disabled -->
+                      <button type="button" disabled onclick="startMeeting('${data[i]["_id"]}', false)" class="btn btn-dark btn-xs">참가</button>
+                    </td>
+                  </tr>
+                  `
+                }
+                meetTable.append(tr);
+              }
+            }
+          })
+          .fail(function () {
+            alert('fail');
+          });
+      }
+
+      function startMeeting(mid, isMade){
+        alert(mid);
+        if(!isMade) {
+          window.location.replace("project_detail.html?mid="+mid);
+        } else {
+        var settings = {
+          crossDomain: true,
+          url: "https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/meet/start?mid="+mid,
+          type: "GET",
+          contentType: "application/json"
+        }
+
+        $.ajax(settings)
+          .done(function (response) {
+            window.location.replace("project_detail.html?mid="+mid);
+          })
+          .fail(function () {
+            alert('fail');
+          });
+        }
+      }
+    </script>
+
   </body>
 </html>
