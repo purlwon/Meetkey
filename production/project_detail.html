@@ -249,12 +249,14 @@
     <script src="../vendors/nprogress/nprogress.js"></script>
     <!-- ECharts -->
     <script src="../vendors/echarts/dist/echarts.min.js"></script>
+    <!-- DateJS -->
+    <script src="../vendors/DateJS/build/date.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
     <script src="./js/cookie.js"></script>
     <!-- Annyang -->
     <script src="../vendors/annyang/annyang.js"></script>
-    <!-- <script src="usefulFunction.js"></script> -->
+
     <script type="text/javascript">
 
       // 쿠키없으면 그냥 1로 설정
@@ -362,7 +364,7 @@
             $("#memo").text(response.memo);
 
             //date+where
-            var dt = new Date(response.date);
+            var dt = new Date(response.date).addHours(-9).addMonths(1);
             $("#date").text(dt.getFullYear()+"-"+dt.getMonth()+"-"+dt.getDate());
             $("#date_time").text(dt.getHours()+"시 "+dt.getMinutes()+"분");
             // where

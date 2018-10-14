@@ -202,6 +202,8 @@
     <script src="../vendors/nprogress/nprogress.js"></script>
     <!-- bootstrap-progressbar -->
     <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- DateJS -->
+    <script src="../vendors/DateJS/build/date.js"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
@@ -244,7 +246,7 @@
                     </li>
                   `
                 }
-                var date = new Date(data[i].date);
+                var dt = new Date(data[i].date).addHours(-9).addMonths(1);
                 var tr = `
                   <tr>
                     <td>${data[i].mname}</td>
