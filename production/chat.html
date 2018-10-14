@@ -48,11 +48,11 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="images/user.png" alt="..." class="img-circle profile_img" id="menu_img">
               </div>
               <div class="profile_info">
-                <span>(주)한이음/웹팀</span>
-                <h2>황채원</h2>
+                <span id="menu_info"></span>
+                <h2 id="menu_name"></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -105,7 +105,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt="">황채원
+                    <img src="images/user.png" id="bar_img"><span id="bar_name">황채원</span>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -140,7 +140,7 @@
                 <!-- <div class="x_panel">
                   <div class="x_content">
                     <br />
-                    
+
                   </div>
                 </div> -->
                 <!-- DIRECT CHAT -->
@@ -160,7 +160,7 @@
                             <div class="clearfix"></div>
                           </div>
                           <div class="direct-chat-messages" style="height: 324px;">
-                            <ul class="list-unstyled msg_list">
+                            <ul class="list-unstyled msg_list" id="member">
                               <li>
                                 <a>
                                   <span class="image">
@@ -200,87 +200,18 @@
                       </div>
                       <div class="col-md-9 mail_view">
                         <!-- Conversations are loaded here -->
-                        
-                        <div class="direct-chat-messages">
-                          <!-- 회의록 left=나를 제외한 상대들 모두-->
-                          <!-- Message. Default to the left -->
-                          <div class="direct-chat-msg">
-                            <div class="direct-chat-info clearfix">
-                              <span class="direct-chat-name left">Alexander Pierce</span><!--참여자 이름-->
-                            </div>
-                            <!-- /.direct-chat-info -->
-                            <img class="direct-chat-img" src="images/img.jpg" alt="message user image"><!--참여자 프로필사진-->
-                            <!-- /.direct-chat-img -->
-                            <div class="direct-chat-text">
-                              Is this template really for free? That's unbelievable!
-                            </div><!--발언내용-->
-                            <!-- /.direct-chat-text -->
-                          </div>
-                          <!-- /.direct-chat-msg -->
 
-                          <div class="clearfix"></div>
-
-                          <!-- 회의록 right=나 -->
-                          <!-- Message to the right -->
-                          <div class="direct-chat-msg right" style="float: right;">
-                            <div class="direct-chat-info clearfix">
-                              <span class="direct-chat-name right">Sarah Bullock</span>
-                            </div>
-                            <!-- /.direct-chat-info -->
-                            <img class="direct-chat-img" src="images/picture.jpg" alt="message user image">
-                            <!-- /.direct-chat-img -->
-                            <div class="direct-chat-text">
-                              You better believe it!
-                            </div>
-                            <!-- /.direct-chat-text -->
-                          </div>
-                          <!-- /.direct-chat-msg -->
-
-                          <div class="clearfix"></div>
-
-                          <!-- Message. Default to the left -->
-                          <div class="direct-chat-msg">
-                            <div class="direct-chat-info clearfix">
-                              <span class="direct-chat-name left">Alexander Pierce</span>
-                            </div>
-                            <!-- /.direct-chat-info -->
-                            <img class="direct-chat-img" src="images/img.jpg" alt="message user image">
-                            <!-- /.direct-chat-img -->
-                            <div class="direct-chat-text">
-                              Working with AdminLTE on a great new app! Wanna join?
-                            </div>
-                            <!-- /.direct-chat-text -->
-                          </div>
-                          <!-- /.direct-chat-msg -->
-
-                          <div class="clearfix"></div>
-
-                          <!-- Message to the right -->
-                          <div class="direct-chat-msg right" style="float: right;">
-                            <div class="direct-chat-info clearfix">
-                              <span class="direct-chat-name right">Sarah Bullock</span>
-                            </div>
-                            <!-- /.direct-chat-info -->
-                            <img class="direct-chat-img" src="images/picture.jpg" alt="message user image">
-                            <!-- /.direct-chat-img -->
-                            <div class="direct-chat-text" >
-                              I would love to.
-                            </div>
-                            <!-- /.direct-chat-text -->
-                          </div>
-                          <!-- /.direct-chat-msg -->
-
-                          <div class="clearfix"></div>
-
+                        <div class="direct-chat-messages" id="talk">
+                          <!-- talk -->
                         </div>
                         <!--/.direct-chat-messages-->
 
                         <!-- Contacts are loaded here -->
-                        
+
                       </div>
                     </div>
                   </div>
-                  
+
                 </div>
                 <!--/.direct-chat -->
               </div>
@@ -313,5 +244,111 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.js"></script>
+    <script src="./js/cookie.js"></script>
+
+    <script>
+      // 쿠키없으면 그냥 1로 설정
+      var unum = getCookie('unum')? getCookie('unum'): 1;
+      var mid = "";
+
+      $(document).ready(function(){
+        mid = parent.document.URL.substring(parent.document.URL.indexOf('=')+1, parent.document.URL.length);
+        printMyInfo();
+        printTalk();
+      });
+
+      function printTalk() {
+        var settings = {
+          crossDomain: true,
+          url: "https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/meet/result?mid="+mid,
+          type: "GET",
+          contentType: "application/json"
+        }
+
+        $.ajax(settings)
+          .done(function (response) {
+            console.log(response);
+
+            // data
+            member_raw = response.member_raw;
+            member = response.member;
+            cluster = response.cluster;
+            // del response;
+
+            // member
+            for(var i=0;i<member_raw.length;i++) {
+              var img = member[member_raw[i]].uimage? member[member_raw[i]].uimage: "images/user.png";
+              var li = `
+                <li>
+                  <a>
+                    <span class="image">
+                      <img src=${img} alt="img">
+                    </span>
+                    <span>
+                      <span>${member[member_raw[i]].uname}</span>
+                    </span>
+                    <span class="message">${member[member_raw[i]].company}/${member[member_raw[i]].department}/${member[member_raw[i]].position}</span>
+                  </a>
+                </li>
+              `
+              $("#member").append(li);
+            }
+
+            // talk
+            for(var i=0;i<cluster.length;i++){
+              for(var j=0;j<cluster[i].length;j++){
+                var img = member[cluster[i][j][0]].uimage? member[cluster[i][j][0]].uimage: "images/user.png";
+                if(cluster[i][j][0] == unum) {
+                  var talk = `
+                    <!-- 회의록 right=나 -->
+                    <!-- Message to the right -->
+                    <div class="direct-chat-msg right" style="float: right;">
+                      <div class="direct-chat-info clearfix">
+                        <span class="direct-chat-name right">${member[cluster[i][j][0]].uname}</span>
+                        <span class="direct-chat-timestamp left">23 Jan 2:05 pm</span>
+                      </div>
+                      <!-- /.direct-chat-info -->
+                      <img class="direct-chat-img" src=${img} alt="message user image">
+                      <!-- /.direct-chat-img -->
+                      <div class="direct-chat-text">
+                        ${cluster[i][j][1]}
+                      </div>
+                      <!-- /.direct-chat-text -->
+                    </div>
+                    <!-- /.direct-chat-msg -->
+
+                    <div class="clearfix"></div>
+                  `
+                } else {
+                  var talk = `
+                    <!-- Message. Default to the left -->
+                    <div class="direct-chat-msg">
+                      <div class="direct-chat-info clearfix">
+                        <span class="direct-chat-name left">${member[cluster[i][j][0]].uname}</span><!--참여자 이름-->
+                        <span class="direct-chat-timestamp right">23 Jan 2:00 pm</span><!--타임스탬프-->
+                      </div>
+                      <!-- /.direct-chat-info -->
+                      <img class="direct-chat-img" src=${img} alt="message user image"><!--참여자 프로필사진-->
+                      <!-- /.direct-chat-img -->
+                      <div class="direct-chat-text">
+                        ${cluster[i][j][1]}
+                      </div><!--발언내용-->
+                      <!-- /.direct-chat-text -->
+                    </div>
+                    <!-- /.direct-chat-msg -->
+
+                    <div class="clearfix"></div>
+                  `
+                }
+              $("#talk").append(talk);
+              }
+            }
+
+          })
+          .fail(function () {
+            alert('fail');
+          });
+      }
+    </script>
   </body>
 </html>

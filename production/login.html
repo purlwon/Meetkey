@@ -230,6 +230,7 @@
             .done(function (response) {
               console.log(response);
               document.cookie = `unum=${response.unum}`;
+              alert(document.cookie);
               window.location.replace("index.html");
             })
             .fail(function () {

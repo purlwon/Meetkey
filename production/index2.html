@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Meetkey</title>
+
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- jQuery custom content scroller -->
+    <link href="../vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+    <!-- bootstrap-progressbar -->
+    <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.css" rel="stylesheet">
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col menu_fixed">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title ">
+                <div class="row">
+                  <div class="col-xs-3">
+                    <img src="images/MeetKey_logo3.png" alt="..." class="" style="max-width: 100%; max-height: 100%">
+                  </div>
+                  <div class="col-xs-8">
+                    <img src="images/MeetKey_text.png" alt="..." style="max-width: 100%; max-height: 100%">
+                    <!-- <span>Meetkey</span> -->
+                  </div>
+                  <div class="col-xs-1">
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_pic">
+                <img src="images/user.png" alt="..." class="img-circle profile_img" id="menu_img">
+              </div>
+              <div class="profile_info">
+                <span id="menu_info"></span>
+                <h2 id="menu_name"></h2>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <!-- <h3>General</h3> -->
+                <ul class="nav side-menu">
+                  <li><a href="index.html"><i class="fa fa-home"></i> Dashboard </a>
+                  </li>
+                  <li><a><i class="fa fa-bar-chart-o"></i> 회의 분석 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="echarts.html">지난 회의 결과</a></li>
+                      <li><a href="projects.html">회의록 리스트</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-edit"></i> 회의 관리 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="form.html">회의 만들기</a></li>
+                      <li><a href="tables_dynamic.html">회의 예약리스트</a></li>
+                      <li><a href="project_detail.html">회의 중(임시)</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="tables.html"><i class="fa fa-group"></i> 친구 관리 </a>
+                  </li>
+                  <li><a href="calendar.html"><i class="fa fa-calendar"></i> 일정 관리 </a>
+                  </li>
+                  <li><a href="profile.html"><i class="fa fa-cog"></i> 개인 설정 </a>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+            <!-- /sidebar menu -->
+
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="images/user.png" id="bar_img"><span id="bar_name">황채원</span>
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="javascript:;"> Profile</a></li>
+                    <li>
+                      <a href="javascript:;">
+                        <span class="badge bg-red pull-right">50%</span>
+                        <span>Settings</span>
+                      </a>
+                    </li>
+                    <li><a href="javascript:;">Help</a></li>
+                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <!-- top tiles -->
+          <div class="row tile_count" id="widget">
+            <!-- widget -->
+          </div>
+          <!-- /top tiles -->
+
+          <div class="">
+            <div class="title_left">
+              <h3>지난 회의 분석 결과</h3>
+            </div>
+          </div>
+
+          <!-- the latest meeting -->
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12" id="meeting">
+              <!-- history append -->
+            </div>
+          </div>
+
+          <br />
+
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Copyright © 2018 Meetkey. All rights reserved.
+            <!-- <a href="https://colorlib.com">Colorlib</a> -->
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- jQuery custom content scroller -->
+    <script src="../vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+    <!-- ECharts -->
+    <script src="../vendors/echarts/dist/echarts.min.js"></script>
+    <!-- Chart.js -->
+    <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <!-- DateJS -->
+    <script src="../vendors/DateJS/build/date.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.js"></script>
+    <script src="./js/cookie.js"></script>
+    <script src="./js/setChart.js"></script>
+
+    <script type="text/javascript">
+
+      var unum = getCookie('unum')? getCookie('unum'): 1;
+      if(!mid) {
+        var mid = "5bb07e5f5fb2b0661d0f6e8b";
+      }
+      $(document).ready(function(){
+        printMyInfo();
+        printWidget();
+        printMeetingInfo();
+      });
+
+      function printWidget() {
+
+        var date = new Date();
+        date.addHours(9);
+        var settings = {
+          crossDomain: true,
+          url: "https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/dashboard",
+          type: "POST",
+          contentType: "application/json",
+          data: `{
+            "unum": ${unum},
+            "date": "${date.toISOString()}"
+          }`
+        }
+        $.ajax(settings)
+          .done(function (response) {
+            console.log(response)
+              var div = `
+              <div class="col-md-4 col-sm-4 col-xs-6 tile_stats_count text-center">
+                <span class="count_top"><i class="fa fa-clock-o"></i> 나의 참여도</span>
+                <div class="count">${response.personal_rate}%</div>
+              </div>
+              <div class="col-md-4 col-sm-4 col-xs-6 tile_stats_count text-center">
+                <span class="count_top"><i class="fa fa-clock-o"></i> 오늘 예정된 회의</span>
+                <div class="count">${response.today}</div>
+                <span class="count_bottom"><button type="button" onclick="location.href='tables_dynamic.html'" class="btn btn-link btn-xs"> 회의 예약리스트 Go!</button></span>
+              </div>
+              <div class="col-md-4 col-sm-4 col-xs-6 tile_stats_count text-center">
+                <span class="count_top"><i class="fa fa-clock-o"></i> 바로 참여하기</span>
+                <span class="count_bottom"><button type="button" onclick="location.href='project_detail.html?mid=${response.near}'" class="btn btn-link"> 링크 Go!</button></span>
+              </div>
+            `
+            $("#widget").append(div);
+            })
+            .fail(function () {
+              alert('fail');
+            });
+      }
+
+      function printMeetingInfo() {
+        var settings = {
+          crossDomain: true,
+          url: "https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/meet/info?unum="+unum+"&done=true",
+          type: "GET",
+          contentType: "application/json"
+        }
+        $.ajax(settings)
+          .done(function (response) {
+            console.log(response)
+            var data = response.data;
+            for(var i=0;i<data.length;i++) {
+              var dt = new Date(data[i].date).addHours(-9).addMonths(1);
+              var panel = `
+                <div class="x_panel">
+                  <div class="row x_title">
+                    <div class="col-md-10 col-sm-10 col-xs-12">
+                      <!-- 회의 이름 -->
+                      <h3><strong id="mname">${data[i].mname}</strong></h3>
+                    </div>
+
+                  </div>
+
+                  <div class="dashboard-widget-content">
+                    <ul class="list-unstyled">
+                      <li>
+                        <div class="col-md-2">
+                          <!-- 회의 정보 -->
+                          <h4><label >회의 일시</label></h4>
+                          <h4>
+                            <span id="date">${dt.getFullYear()+"-"+dt.getMonth()+"-"+dt.getDate()}</span>
+                            <span id="time">${dt.getHours()+"시 "+dt.getMinutes()+"분"}</span>
+                          </h4>
+                          <h4><label>회의 장소</label></h4>
+                          <h4><span id="where">${data[i].where}</span></h4>
+                          <h4><label>총 회의 시간</label></h4>
+                          <h4><span id="time_all">${TimeAll2String(data[i].time_all)}</span></h4>
+                          <h4><label>회의 메모</label></h4>
+                          <h4><span id="memo">${data[i].memo}</span></h4>
+                        </div>
+                        <div class="col-md-5">
+                          <!-- 회의 클러스터 -->
+                          <ul class="list-unstyled timeline" id="sum_cluster${i}">
+                            <!-- summarize per cluster -->
+                          </ul>
+                        </div>
+                        <div class="col-md-5">
+                          <!-- 회의 시간 차트 -->
+                          <div id="echart_bar_horizontal${i}" style="height:300px;"></div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+                `
+                $("#meeting").append(panel);
+                matchResult(data[i], "#sum_cluster"+i.toString(), "echart_bar_horizontal"+i.toString());
+              }
+            })
+            .fail(function () {
+              alert('fail');
+            });
+      }
+
+      function matchResult(meeting, id4sum, id4cht){
+        //alert(id4sum);
+        // summarize per cluster
+        var sum = meeting.summarize;
+        for(var i=0;i<sum.length;i++) {
+          var text="";
+          for(var j=0;j<sum[i].length;j++) {
+            text += sum[i][j]+" ";
+          }
+          var li = `
+          <li>
+            <div class="block">
+              <div class="tags">
+                <a href="" class="tag">
+                  <span>주제${i+1}</span>
+                </a>
+              </div>
+              <div class="block_content">
+                <h2 class="title">
+                    <!-- <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a> -->
+                </h2>
+                <!-- <div class="byline">
+                  <span>13 hours ago</span> by <a>Jane Smith</a>
+                </div> -->
+                  <p>
+                    ${text}
+                  </p>
+              </div>
+            </div>
+          </li>
+          `
+          $(id4sum).append(li);
+        }
+
+        // time_per_cluster
+        var echartCluster = echarts.init(document.getElementById(id4cht), theme);
+        setTimePerCluster(echartCluster, meeting);
+      }
+    </script>
+  </body>
+</html>
