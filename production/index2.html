@@ -135,16 +135,16 @@
         <!-- page content -->
         <div class="right_col" role="main">
           <!-- top tiles -->
-          <div class="row top_tiles" id="widget">
+          <div class="row tile_count" id="widget">
             <!-- widget -->
           </div>
           <!-- /top tiles -->
 
-          <!-- <div class="">
+          <div class="">
             <div class="title_left">
               <h3>지난 회의 분석 결과</h3>
             </div>
-          </div> -->
+          </div>
 
           <!-- the latest meeting -->
           <div class="row">
@@ -200,6 +200,7 @@
     <script src="./js/setChart.js"></script>
 
     <script type="text/javascript">
+
       var unum = getCookie('unum')? getCookie('unum'): 1;
       if(!mid) {
         var mid = "5bb07e5f5fb2b0661d0f6e8b";
@@ -209,7 +210,9 @@
         printWidget();
         printMeetingInfo();
       });
+
       function printWidget() {
+
         var date = new Date();
         date.addHours(9);
         var settings = {
@@ -226,27 +229,18 @@
           .done(function (response) {
             console.log(response)
               var div = `
-              <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-comments-o"></i></div>
-                  <div class="count">${response.personal_rate}%</div>
-                  <h3>나의 평균 참여도</h3>
-                </div>
+              <div class="col-md-4 col-sm-4 col-xs-6 tile_stats_count text-center">
+                <span class="count_top"><i class="fa fa-clock-o"></i> 나의 참여도</span>
+                <div class="count">${response.personal_rate}%</div>
               </div>
-              <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <div class="title-stats">
-                  <div class="icon"><i class="fa fa-check-square-o"></i></div>
-                  <div class="count">${response.today}</div>
-                  <h3>오늘 예정된 회의</h3>
-                  <p><button type="button" onclick="location.href='tables_dynamic.html'" class="btn btn-link btn-xs"> 회의 예약리스트 Go!</button></p>
-                </div>
+              <div class="col-md-4 col-sm-4 col-xs-6 tile_stats_count text-center">
+                <span class="count_top"><i class="fa fa-clock-o"></i> 오늘 예정된 회의</span>
+                <div class="count">${response.today}</div>
+                <span class="count_bottom"><button type="button" onclick="location.href='tables_dynamic.html'" class="btn btn-link btn-xs"> 회의 예약리스트 Go!</button></span>
               </div>
-              <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <div class="title-stats">
-                  <div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
-                  <div class="count"><button type="button" onclick="location.href='project_detail.html?mid=${response.near}'" class="btn btn-link">바로 참여하기</button></div>
-                  <h3>바로 참여할 수 있는 회의가 진행 중입니다</h3>
-                </div>
+              <div class="col-md-4 col-sm-4 col-xs-6 tile_stats_count text-center">
+                <span class="count_top"><i class="fa fa-clock-o"></i> 바로 참여하기</span>
+                <span class="count_bottom"><button type="button" onclick="location.href='project_detail.html?mid=${response.near}'" class="btn btn-link"> 링크 Go!</button></span>
               </div>
             `
             $("#widget").append(div);
@@ -255,6 +249,7 @@
               alert('fail');
             });
       }
+
       function printMeetingInfo() {
         var settings = {
           crossDomain: true,
@@ -275,7 +270,9 @@
                       <!-- 회의 이름 -->
                       <h3><strong id="mname">${data[i].mname}</strong></h3>
                     </div>
+
                   </div>
+
                   <div class="dashboard-widget-content">
                     <ul class="list-unstyled">
                       <li>
@@ -317,6 +314,7 @@
               alert('fail');
             });
       }
+
       function matchResult(meeting, id4sum, id4cht){
         //alert(id4sum);
         // summarize per cluster
@@ -350,6 +348,7 @@
           `
           $(id4sum).append(li);
         }
+
         // time_per_cluster
         var echartCluster = echarts.init(document.getElementById(id4cht), theme);
         setTimePerCluster(echartCluster, meeting);

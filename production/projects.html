@@ -154,7 +154,7 @@
                           <th style="width: 20%">회의 일시</th><!--회의 날짜+회의시간-->
                           <th>회의 참여자</th><!--회의 참여자-->
                           <th>전체 회의 내용</th>
-                          <th style="width: 20%">전체 텍스트 다운로드</th>
+                          <th style="width: 20%">전체 스크립트</th>
                         </tr>
                       </thead>
                       <tbody id="table_body">
@@ -343,12 +343,12 @@
                       </ul>
                     </td>
                     <td>
-                      <a href="chat.html?mid=${data[i]["_id"]}">확인하기</a><!--해당 회의에 맞는 채팅 페이지로 동적 이동-->
+                      <a href="echarts.html?mid=${data[i]["_id"]}">확인하기</a><!--해당 회의에 맞는 채팅 페이지로 동적 이동-->
                     </td>
                     <td>
-                      <a href="#"><!--DB에서 해당파일 동적으로 가져오는 링크 -->
+                      <a href='chat.html?mid=${data[i]["_id"]}'>
                         <i class="fa fa-file-text-o"></i>
-                        ${data[i].mname}.txt<!--전체 텍스트 파일 이름.형식-->
+                        ${data[i].mname}<!--전체 텍스트 파일 이름.형식-->
                       </a>
                     </td>
                   </tr>
