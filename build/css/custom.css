@@ -1,16 +1,16 @@
 
 html , body{
-	
+
  min-height:100%;
- 
+
 }
- 
+
 .full-width {
-	
+
  width:100%;
- 
+
  }
- 
+
 .full-height{
  height:100%;
  }
@@ -1661,7 +1661,7 @@ h5.graph_title i {
 }
 span.right {
     float: right;
-    
+
 }
 .tile_info a {
     text-overflow: ellipsis
@@ -1856,6 +1856,7 @@ h4.graph_title {
     -moz-osx-font-smoothing: grayscale
 }
 .tile-stats {
+		height: 128px;
     position: relative;
     display: block;
     margin-bottom: 12px;
@@ -1908,10 +1909,10 @@ h4.graph_title {
 .tile-stats .count {
     font-size: 38px;
     font-weight: bold;
-    line-height: 1.65857
+    line-height: 1;
 }
 .tile-stats .count,
-.tile-stats h3,
+.tile-stats h4,
 .tile-stats p {
     position: relative;
     margin: 0;
@@ -1919,8 +1920,10 @@ h4.graph_title {
     z-index: 5;
     padding: 0
 }
-.tile-stats h3 {
-    color: #BAB8B8
+.tile-stats h4 {
+    color: #BAB8B8;
+		font_weight: bold;
+		line-height: 3;
 }
 .tile-stats p {
     margin-top: 5px;
@@ -3594,8 +3597,8 @@ image - card background
 .service-box {
   position: absolute;
   z-index: 2;
-  height: 100%;    
-  width: 100%;  
+  height: 100%;
+  width: 100%;
   top:0;
 
 }
@@ -3610,7 +3613,7 @@ image - card background
   font-size: 4rem;
   color: white;
   text-align: center;
-  padding: 80px 20px 20px 20px;  
+  padding: 80px 20px 20px 20px;
 }
 
 .service-box-detail {
@@ -3625,7 +3628,7 @@ image - card background
   color: white;
   text-align: center;
   word-wrap: break-word;
-  padding: 60px 20px 90px 20px;  
+  padding: 60px 20px 90px 20px;
 }
 
 /*
@@ -4691,7 +4694,7 @@ ul.notifications {
 table thead .checkbox { margin-top:-7px;margin-top:-21px; }
 table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 */
-			
+
 .daterangepicker.xdisplay { width:228px; }
 
 .dataTables_wrapper > .row{

@@ -292,42 +292,34 @@
           .done(function (response) {
             console.log(response)
               var div = `
-              <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+              <div class="animated flipInY text-center col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-comments-o"></i></div>
+                  <h4>나의 평균 참여도</h4>
                   <div class="count">${response.personal_rate}%</div>
-                  <h3>나의 평균 참여도</h3>
-                  <p><button type="button" onclick="" class="btn btn-link btn-xs"> 　 </button></p>
                 </div>
               </div>
-              <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+              <div class="animated flipInY text-center col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div class="tile-stats">
-                  <div class="icon"><i class="fa fa-check-square-o"></i></div>
+                  <h4>오늘 예정된 회의</h4>
                   <div class="count">${response.today}</div>
-                  <h3>오늘 예정된 회의</h3>
                   <p><button type="button" onclick="location.href='tables_dynamic.html'" class="btn btn-link btn-xs"> 회의 예약리스트 Go!</button></p>
                 </div>
               </div>
             `
             if(response.near) {
               var div2 = `
-                <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                  <div class="tile-stats">
-                    <div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
-                    <div class="count"><button type="button" onclick="location.href='project_detail.html?mid=${response.near}'" class="btn btn-link">바로 참여하기</button></div>
-                    <h3>회의가 진행 중입니다</h3>
-                    <p><button type="button" onclick="" class="btn btn-link btn-xs"> 　</button></p>
-                  </div>
+              <div class="animated flipInY text-center col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="tile-stats">
+                  <h4>회의가 진행 중입니다!</h4>
+                  <div class="count"><a href="project_detail.html?mid=${response.near}" >바로 참가하기</a></div>
                 </div>
+              </div>
               `
             } else {
               var div2 = `
-                <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="animated flipInY text-center col-lg-4 col-md-4 col-sm-6 col-xs-12">
                   <div class="tile-stats">
-                    <div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
-                    <div class="count"><button type="button" class="btn btn-link" disable></button></div>
-                    <h3>진행 중인 회의가 없습니다</h3>
-                    <p><button type="button" onclick="" class="btn btn-link btn-xs"> 　</button></p>
+                    <div class="count">진행중인 회의 없음</div>
                   </div>
                 </div>
               `
