@@ -161,7 +161,7 @@
                           </div>
                           <div class="direct-chat-messages" style="height: 324px;">
                             <ul class="list-unstyled msg_list" id="member">
-                              
+
                             </ul>
                           </div>
                         </section>
@@ -264,6 +264,13 @@
 
             // talk
             for(var i=0;i<cluster.length;i++){
+              var sub = `
+                <div class="clearfix"><br /></div>
+                <div class="clearfix text-center">
+                  <h5>---주제${i+1}---</h5>
+                </div>
+              `
+              $("#talk").append(sub);
               for(var j=0;j<cluster[i].length;j++){
                 var img = member[cluster[i][j][0]].uimage? member[cluster[i][j][0]].uimage: "images/user.png";
                 if(cluster[i][j][0] == unum) {
@@ -273,7 +280,7 @@
                     <div class="direct-chat-msg right" style="float: right;">
                       <div class="direct-chat-info clearfix">
                         <span class="direct-chat-name right">${member[cluster[i][j][0]].uname}</span>
-                        <span class="direct-chat-timestamp left">23 Jan 2:05 pm</span>
+                        <span class="direct-chat-timestamp left"></span>
                       </div>
                       <!-- /.direct-chat-info -->
                       <img class="direct-chat-img" src=${img} alt="message user image">
@@ -293,7 +300,7 @@
                     <div class="direct-chat-msg">
                       <div class="direct-chat-info clearfix">
                         <span class="direct-chat-name left">${member[cluster[i][j][0]].uname}</span><!--참여자 이름-->
-                        <span class="direct-chat-timestamp right">23 Jan 2:00 pm</span><!--타임스탬프-->
+                        <span class="direct-chat-timestamp right"></span><!--타임스탬프-->
                       </div>
                       <!-- /.direct-chat-info -->
                       <img class="direct-chat-img" src=${img} alt="message user image"><!--참여자 프로필사진-->
