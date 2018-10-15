@@ -140,7 +140,6 @@
                 <!-- <div class="x_panel">
                   <div class="x_content">
                     <br />
-
                   </div>
                 </div> -->
                 <!-- DIRECT CHAT -->
@@ -218,13 +217,11 @@
       // 쿠키없으면 그냥 1로 설정
       var unum = getCookie('unum')? getCookie('unum'): 1;
       var mid = "";
-
       $(document).ready(function(){
         mid = parent.document.URL.substring(parent.document.URL.indexOf('=')+1, parent.document.URL.length);
         printMyInfo();
         printTalk();
       });
-
       function printTalk() {
         var settings = {
           crossDomain: true,
@@ -232,17 +229,14 @@
           type: "GET",
           contentType: "application/json"
         }
-
         $.ajax(settings)
           .done(function (response) {
             console.log(response);
-
             // data
             member_raw = response.member_raw;
             member = response.member;
             cluster = response.cluster;
             // del response;
-
             // member
             for(var i=0;i<member_raw.length;i++) {
               var img = member[member_raw[i]].uimage? member[member_raw[i]].uimage: "images/user.png";
@@ -261,13 +255,14 @@
               `
               $("#member").append(li);
             }
-
             // talk
             for(var i=0;i<cluster.length;i++){
               var sub = `
                 <div class="clearfix"><br /></div>
                 <div class="clearfix text-center">
-                  <h5>---주제${i+1}---</h5>
+                  <div class="alert alert-cluster">
+                    <h3>주제${i+1}</h3>
+                  <div>
                 </div>
               `
               $("#talk").append(sub);
@@ -291,7 +286,6 @@
                       <!-- /.direct-chat-text -->
                     </div>
                     <!-- /.direct-chat-msg -->
-
                     <div class="clearfix"></div>
                   `
                 } else {
@@ -311,14 +305,12 @@
                       <!-- /.direct-chat-text -->
                     </div>
                     <!-- /.direct-chat-msg -->
-
                     <div class="clearfix"></div>
                   `
                 }
               $("#talk").append(talk);
               }
             }
-
           })
           .fail(function () {
             alert('fail');

@@ -460,7 +460,7 @@
           for(var i=0;i<sum.length;i++) {
             var text="";
             for(var j=0;j<sum[i].length;j++) {
-              text += sum[i][j]+" ";
+              text += sum[i][j][1]+"("+response.member[sum[i][j][0]].uname+")<br/>";
             }
             var li = `
             <li>

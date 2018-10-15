@@ -4521,6 +4521,28 @@ ul.verticle_bars li {
 .progress.vertical.progress_wide {
     width: 35px
 }
+
+.alert-cluster h3 {
+    position: relative;
+    font-size: 1.17em;
+    font-weight: bold;
+    display: inline-block;
+    padding:0 15px;
+}
+.alert-cluster h3:before, .alert-cluster h3:after {
+    position: absolute;
+    top: 50%;
+    width: 150px;
+    height: 3px;
+    content: '';
+    background-color: #007bff;
+    left:-150px;
+}
+
+.alert-cluster h3:after {
+  left: 100%;
+}
+
 .alert-success {
     color: #ffffff;
     background-color: rgba(38, 185, 154, 0.88);
