@@ -325,12 +325,305 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
+    <script src="./js/cookie.js"></script>
 
     <!-- <script src="usefulFunction.js"></script> -->
     <script type="text/javascript">
       $(document).ready(function() {
           $('.select2').select2();
       });
+    </script>
+
+    <!-- jquery script -->
+    <script type="text/javascript">
+
+      var unum = getCookie('unum')? getCookie('unum'):1;
+
+      $(document).ready(function(){ // 처음 페이지 로드 시,
+
+        $('.select2').select2();
+
+        $('#resultFav').hide(); // 아이디 검색결과 테이블 틀 없애주고
+        $('#addFav').hide(); // 추가버튼 없애주고
+        $("#sel_fav").select2({
+          placeholder: "이름검색하구 선택하슈ㅠ",
+          allowClear: true, //선택 해제
+        });
+        printFavorite(); // 즐겨찾는 계정 리스트 프린트
+        printGroup();
+
+      });
+
+      $('a[data-toggle="tab"]').on( 'shown.bs.tab', function (e) { //탭이 보여지고 난 후
+            $.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust();
+        } );
+
+      // 즐겨찾는 계정 전체 검색
+      function printFavorite(){
+
+        $("#Fav").find("tr:gt(0)").remove(); // 첫번째행 빼고 다 지우기
+        $("#sel_fav").find("option").remove();
+
+        var settings = {
+          crossDomain: true,
+          url: `https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/add/favorite?unum=${unum}`,
+          type: "GET",
+          contentType: "application/json",
+        }
+
+        // response
+        // 검색 성공시: [{unum, uname, company, department, position}]
+        // 검색 실패시: {message: ""}
+        $.ajax(settings)
+          .done(function (response) {
+            console.log(response);
+            if(response.message){
+              alert(response.message);
+            } else {
+              var favorites = response.data;
+              for(var i=0; i<favorites.length; i++){
+                // 즐겨찾기를 위해
+                var data = `
+                <tr>
+                  <td>${favorites[i].uname}</td>
+                  <td>${favorites[i].company}</td>
+                  <td>${favorites[i].department}</td>
+                  <td>${favorites[i].position}</td>
+                  <td><button type="button" class="btn btn-tool" onclick=delFav(${favorites[i].unum})><i class="fa fa-times"></i></button></td>
+                </tr>
+                `
+                $("#Fav").append(data);
+
+                // 그룹 추가를 위해
+                //옵션으로 친구 이름만 띄운다
+                // var option = $('<option/>');
+                // option.attr({'value': favorites[i].unum).text(favorites[i].uname);
+                var data = `<option value=${favorites[i].unum}>${favorites[i].uname}</option>`
+                $("#sel_fav").append(data);
+
+              }
+            }
+          })
+          .fail(function() {
+            alert('즐겨찾는 계정을 불러오는데 실패했습니다.');
+          });
+      }
+
+      function printGroup(){
+
+        $("#group").find("tr:gt(0)").remove();
+
+        var settings = {
+          crossDomain: true,
+          url: `https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/add/group?unum=${unum}`,
+          type: "GET",
+          contentType: "application/json",
+        }
+
+        // response
+        // 검색 성공시: {groupname: [{username, comname, department, position}]}
+        // 검색 실패시: {message: ""}
+        $.ajax(settings).done(function (response) {
+          for (var key in response) {
+            var group = response[key];
+            var member = ""
+            for(var i=0; i<group.length; i++){
+              var user = group[i].uname+"("+group[i].position+")";
+              if(i){ member += ", "+user; }
+              else { member += user; }
+            }
+            var data = `
+            <tr data-value="${key}">
+              <td>${key}</td>
+              <td>${member}</td>
+              <td><button type="button" class="btn btn-tool" onclick="delGroup('${key}')"><i class="fa fa-times"></i></button></td>
+            </tr>
+            `
+            $("#group").append(data);
+          }
+        });
+      };
+      // 아이디로 계정 검색
+      function searchFav(){
+        var uid = $('#uid').val();
+
+        var settings = {
+          crossDomain: true,
+          url: `https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/add/search`,
+          type: "POST",
+          contentType: "application/json",
+          data: `{
+            "uid": "${uid}"
+          }`
+        }
+
+        // response
+        // 검색 성공시: {unum, uname, company, department, position}
+        // 검색 실패시: {message: ""}
+        $.ajax(settings)
+          .done(function (response) {
+            if(response.message){
+              // $("#result").text("결과: "+response.message);
+              $("#uname").text("");
+              $("#company").text("");
+              $("#department").text("");
+              $("#position").text("");
+              $('#resultFav').hide();
+              $('#addFav').hide();
+              alert(response.message);
+            } else {
+              $('#resultFav').show(); //검색결과 까꿍
+              $("#uname").text(response.uname);
+              $("#company").text(response.company);
+              $("#department").text(response.department);
+              $("#position").text(response.position);
+              // 이미지는 추후에 작업할테니 아무거나 폴더에서 끌어와서 작업바람.
+              $('#addFav').removeAttr('onclick'); //원래 있는 onclick 함수 삭제하고
+              $('#addFav').attr('onClick', `addFav(${response.unum})`); //검색한 계정의 unum으로 파라미터 수정
+              $('#addFav').show(); //추가하기 버튼 까꿍
+            }
+          })
+          .fail(function() {
+            alert('검색에 실패했습니다. 다시 시도해주세요.');
+          });
+      }
+
+      // 즐겨찾는 계정 추가하기
+      // 파라미터: 검색시 수정했던 친구의 unum
+      function addFav(fnum){
+
+        var settings = {
+          crossDomain: true,
+          url: `https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/add/favorite`,
+          type: "POST",
+          contentType: "application/json",
+          data: `{
+            "unum": "${unum}",
+            "fnum": "${fnum}"
+          }`
+        }
+
+        // response
+        // 검색 성공시: {}
+        // 검색 실패시: {message: ""}
+        $.ajax(settings)
+          .done(function (response) {
+            if(response.message)
+              alert(response.message)
+            else {
+              printFavorite(); //즐겨찾는 계정 리스트 다시 프린트
+            }
+          })
+          .fail(function() {
+            alert('추가에 실패했습니다. 다시 시도해주세요.');
+          });
+
+      }
+
+
+      // 즐겨찾는 계정 삭제
+      function delFav(fnum){
+
+        var settings = {
+          crossDomain: true,
+          url: `https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/add/favorite`,
+          type: "DELETE",
+          contentType: "application/json",
+          data: `{
+            "unum": "${unum}",
+            "fnum": "${fnum}"
+          }`
+        }
+
+        // response
+        // 검색 성공시: {}
+        // 검색 실패시: {message: ""}
+        $.ajax(settings)
+          .done(function (response) {
+            if(response.message){
+              alert(response.message);
+            } else {
+              printFavorite(); //즐겨찾는 계정 리스트 다시 프린트
+            }
+          })
+          .fail(function() {
+            alert('즐겨찾는 계정을 불러오는데 실패했습니다.');
+          });
+      }
+
+      //---------------addGroup----------------
+      // addGroup 버튼 클릭 시 sel_fav에서 골랐던 옵션 전달
+      // 그룹명 포함 되어있음....☆
+      function addGroup(){
+        //선택된 옵션이 있을 경우,
+        if(!($('#sel_fav option:selected').length&&$('#gname').val())) {
+          alert('모든 정보를 입력하세요.');
+        } else {
+          var selectedFav = []
+          $('#sel_fav option:selected').each(function(){
+            selectedFav.push($(this).val())
+          });
+          var gname = $('#gname').val();
+
+          var settings = {
+            crossDomain: true,
+            url: `https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/add/group`,
+            type: "POST",
+            contentType: "application/json",
+            data: `{
+              "unum": "${unum}",
+              "gname": "${gname}",
+              "member": [${selectedFav}]
+            }`
+          }
+
+          // response
+          // 검색 성공시: {}
+          // 검색 실패시: {message: ""}
+          $.ajax(settings)
+            .done(function (response) {
+              if(response.message)
+                alert(response.message)
+              else {
+                printGroup(); //즐겨찾는 계정 리스트 다시 프린트
+              }
+            })
+            .fail(function() {
+              alert('추가에 실패했습니다. 다시 시도해주세요.');
+            });
+        }
+      };
+
+      // 즐겨찾는 계정 삭제
+      function delGroup(gname){
+
+        var settings = {
+          crossDomain: true,
+          url: `https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/add/group`,
+          type: "DELETE",
+          contentType: "application/json",
+          data: `{
+            "unum": "${unum}",
+            "gname": "${gname}"
+          }`
+        }
+
+        // response
+        // 검색 성공시: {}
+        // 검색 실패시: {message: ""}
+        $.ajax(settings)
+          .done(function (response) {
+            if(response.message){
+              alert(response.message);
+            } else {
+              printGroup(); //즐겨찾는 계정 리스트 다시 프린트
+            }
+          })
+          .fail(function() {
+            alert('그룹을 삭제하는데 실패했습니다.');
+          });
+      }
+
     </script>
   </body>
 </html>
