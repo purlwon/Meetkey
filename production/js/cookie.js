@@ -24,7 +24,7 @@ var printMyInfo = function(unum) {
     url: "https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/valid/user",
     type: "POST",
     contentType: "application/json",
-    data: JSON.stringify({unum: 1})
+    data: JSON.stringify({unum: unum})
   }
 
   $.ajax(settings)

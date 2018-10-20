@@ -49,11 +49,11 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="images/user.png" alt="..." class="img-circle profile_img" id="menu_img">
               </div>
               <div class="profile_info">
-                <span>(주)한이음/웹팀</span>
-                <h2>황채원</h2>
+                <span id="menu_info"></span>
+                <h2 id="menu_name"></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -106,7 +106,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt="">황채원
+                    <img src="images/user.png" id="bar_img"><span id="bar_name">황채원</span>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -349,6 +349,7 @@
           placeholder: "이름검색하구 선택하슈ㅠ",
           allowClear: true, //선택 해제
         });
+        printMyInfo(unum);
         printFavorite(); // 즐겨찾는 계정 리스트 프린트
         printGroup();
 

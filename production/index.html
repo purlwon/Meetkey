@@ -263,7 +263,7 @@
         var mid = "5bb07e5f5fb2b0661d0f6e8b";
       }
       $(document).ready(function(){
-        printMyInfo();
+        printMyInfo(unum);
         printWidget();
         printMeetingInfo();
 
@@ -275,6 +275,7 @@
         var echartCluster = echarts.init(document.getElementById("echart_bar_horizontal"), theme);
         setTimePerCluster(echartCluster, meeting);
       });
+
       function printWidget() {
         var date = new Date();
         date.addHours(9);
