@@ -243,10 +243,15 @@
 
       async function register(){
 
-        var sdata = await uploadImage();
-        var jdata = JSON.parse(sdata);
-        var path = jdata.data[0];
-        console.log("register", path);
+        if(document.getElementById('mypicture').files[0]) {
+          var sdata = await uploadImage();
+          var jdata = JSON.parse(sdata);
+          var path = jdata.data[0];
+          console.log("register", path);
+        } else {
+          console.log('no image');
+          var path = "images/user.png";
+        }
 
         try {
           var id = $("#reg_id").val();
