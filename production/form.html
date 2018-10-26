@@ -15,19 +15,10 @@
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- iCheck -->
-    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <!-- Select2 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-    <!-- Switchery -->
-    <link href="../vendors/switchery/dist/switchery.min.css" rel="stylesheet">
-    <!-- starrr -->
-    <link href="../vendors/starrr/dist/starrr.css" rel="stylesheet">
-    <!-- bootstrap-daterangepicker -->
-    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
     <!-- bootstrap-datetimepicker -->
     <link href="../vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
-
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.css" rel="stylesheet">
   </head>
@@ -150,7 +141,7 @@
                 <div class="x_panel">
                   <div class="x_content">
                     <br />
-                    <form data-parsley class="form-horizontal form-label-left">
+                    <form class="form-horizontal form-label-left">
 
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mname">회의 이름 <span class="required">*</span>
@@ -185,14 +176,12 @@
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="members" class="control-label col-md-3 col-sm-3 col-xs-12">회의 참여자 <span class="required">*</span>
+                        <label for="sel_mem" class="control-label col-md-3 col-sm-3 col-xs-12">회의 참여자 <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <!-- sel_mem select -->
-                          <select id="sel_mem" class="select2 form-control col-md-7 col-xs-12" required="required" multiple="multiple">
+                          <select id="sel_mem" class="select2 form-control col-md-7 col-xs-12" required="required" multiple="multiple" style="width: 100%">
                             <optgroup label="즐겨찾기" id="sel_fav">
-                              <option>라</option>
-                              <option>동동</option>
                             </optgroup>
                             <optgroup label="그룹" id="sel_grp">
                               <option>엥</option>
@@ -212,9 +201,9 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <button type="reset" class="btn btn-primary">다시 작성</button>
-                          <button type="submit" class="btn btn-primary">회의 예약</button>
-                          <button type="submit" onclick="bookMeet();" class="btn btn-success">회의 시작</button>
+                          <button type="reset" class="btn btn-default">다시 작성</button>
+                          <button type="submit" onclick="bookMeet();"  class="btn btn-success">회의 예약</button>
+                          <button type="submit" onclick="startMeet();" class="btn btn-primary">회의 시작</button>
                         </div>
                       </div>
 
@@ -246,30 +235,15 @@
     <script src="../vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
     <script src="../vendors/nprogress/nprogress.js"></script>
-    <!-- bootstrap-progressbar -->
-    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-    <!-- iCheck -->
-    <script src="../vendors/iCheck/icheck.min.js"></script>
-    <!-- bootstrap-daterangepicker -->
-    <script src="../vendors/moment/min/moment.min.js"></script>
-    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
     <!-- bootstrap-datetimepicker -->
     <script src="../vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
     <script src="../vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
-    <!-- Switchery -->
-    <script src="../vendors/switchery/dist/switchery.min.js"></script>
     <!-- Select2 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-    <!-- Parsley -->
-    <script src="../vendors/parsleyjs/dist/parsley.min.js"></script>
-    <!-- Parsley ko -->
-    <script src="../vendors/parsleyjs/dist/i18n/ko.js"></script>
     <!-- Autosize -->
     <script src="../vendors/autosize/dist/autosize.min.js"></script>
     <!-- jQuery autocomplete -->
     <script src="../vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
-    <!-- starrr -->
-    <script src="../vendors/starrr/dist/starrr.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.js"></script>
     <script src="./js/cookie.js"></script>
@@ -280,12 +254,9 @@
       });
 
       $('#time').datetimepicker({
-        format: 'hh:mm'
+        format: 'HH:mm'
       });
 
-      $(document).ready(function() {
-          $('#sel_mem').select2();
-      });
     </script>
 
     <script>
@@ -294,6 +265,11 @@
 
     $(document).ready(function(){
       printMyInfo(unum);
+
+      $('#sel_mem').select2();
+
+      printFavorite();
+      printGroup();
     });
 
 
@@ -322,6 +298,73 @@
             alert('fail');
           });
       }
+
+      // select option Favorite 
+      function printFavorite(){
+
+        var settings = {
+          crossDomain: true,
+          url: `https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/add/favorite?unum=${unum}`,
+          type: "GET",
+          contentType: "application/json",
+        }
+
+        $.ajax(settings)
+          .done(function (response) {
+            console.log(response);
+            if(response.message){
+              alert(response.message);
+            } else {
+              var favorites = response.data;
+              for(var i=0; i<favorites.length; i++){
+                var data = `<option value=${favorites[i].unum}>${favorites[i].uname}</option>`
+
+                $("#sel_fav").append(data);
+
+              }
+            }
+          })
+          .fail(function() {
+            alert('즐겨찾는 계정을 불러오는데 실패했습니다.');
+          });
+      }
+
+      // select option Group
+      function printGroup(){
+
+        var settings = {
+          crossDomain: true,
+          url: `https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/add/group?unum=${unum}`,
+          type: "GET",
+          contentType: "application/json",
+        }
+
+        $.ajax(settings).done(function (response) {
+          for (var key in response) {
+            var group = response[key];
+            var member = ""
+            for(var i=0; i<group.length; i++){
+              var user = group[i].uname+"("+group[i].position+")";
+              if(i){ member += ", "+user; }
+              else { member += user; }
+            }
+            var data = `
+            <option value="${key}">${key}</option>
+            `
+            $("#sel_grp").append(data);
+          }
+        });
+      };
+
+      // book the meeting
+      function bookMeet(){
+
+      };
+
+      // start the meeting
+      function startMeet(){
+
+      };
     </script>
 
   </body>
