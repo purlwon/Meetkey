@@ -201,10 +201,26 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <ul class="list-unstyled timeline" id="sum_cluster">
-                      <!-- summarize per cluster -->
-                    </ul>
-
+                    <div role="tabpanel" data-example-id="togglable-tabs">
+                      <ul class="nav nav-tabs bar_tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#totalTab" id="sum-tab" role="tab" data-toggle="tab" aria-expanded="true">전체</a>
+                        </li>
+                        <li role="presentation" class=""><a href="#myTab" role="tab" id="my-tab" data-toggle="tab" aria-expanded="false">나만의 요약</a>
+                        </li>
+                      </ul>
+                      <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade active in" id="totalTab" aria-labelledby="sum-tab">
+                          <ul class="list-unstyled timeline" id="sum_cluster">
+                            <!-- summarize per cluster -->
+                          </ul>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="myTab" aria-labelledby="my-tab">
+                          <ul class="list-unstyled timeline" id="my_cluster">
+                            <!-- summarize per cluster of me -->
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <!-- x panel -->
@@ -357,7 +373,7 @@
                       <div class="col-md-9 col-sm-9 col-xs-12">
                         <!-- tensor -->
                         <p>tensor board</p>
-                        <iframe id="tensor" src="" width="900" height="650"></iframe>
+                        <iframe id="tensor" src="http://desktop-bpei9jt:6006/#projector&run=." width="900" height="650"></iframe>
                       </div>
                       <div class="col-md-3 col-sm-3 col-xs-12">
                         <table class="table">
@@ -423,6 +439,7 @@
       mid = parent.document.URL.substring(parent.document.URL.indexOf('=')+1, parent.document.URL.length);
       printMyInfo(unum);
       printMeetingResult();
+      hideIt();
     });
     function printMeetingResult() {
       var settings = {
@@ -496,6 +513,24 @@
           .fail(function () {
             alert('fail');
           });
+    }
+
+    // function hideIt(){
+    //    document.getElementById('#tensor').contentWindow.document.getElementById('#toolbar-content').style.display = 'none';
+    // }
+
+    // function hideIt(){
+    //   var f =$('#tensor')
+    //   f.load(function(){
+    //     f.contents().find('#toolbar').attr("style","display:none");
+    //   })
+    // }
+
+    function hideIt(){
+      var f =$('#tensor')
+      f.load(function(){
+        f.contents().find('#toolbar').hide();
+      })
     }
     </script>
 
