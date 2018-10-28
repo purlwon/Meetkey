@@ -440,6 +440,9 @@
       printMyInfo(unum);
       printMeetingResult();
       hideIt();
+      // $("#tensor").contents().find("#left-pane").removeClass('vz-projector');
+      // $("#tensor").contents().find("#title").empty();
+      // $("#tensor").contents().find("#mainPanel").hide();
     });
     function printMeetingResult() {
       var settings = {
@@ -515,23 +518,39 @@
           });
     }
 
-    // function hideIt(){
-    //    document.getElementById('#tensor').contentWindow.document.getElementById('#toolbar-content').style.display = 'none';
-    // }
+    function hideIt(){
+       // document.getElementById('#tensor').contentWindow.document.getElementById('#toolbar-content').style.display = 'none';
+
+       // document.getElementById('tensor').setAttribute('style', 'display:none');
+
+      var ifrm = document.getElementById( 'tensor' );
+      var win = ifrm.contentWindow;
+      var doc = ifrm.contentDocument? ifrm.contentDocument: ifrm.contentWindow.document;
+      var tb = doc.getElementById('toolbar')
+      tb.setAttribute( 'style', 'display:none' );
+    }
 
     // function hideIt(){
     //   var f =$('#tensor')
     //   f.load(function(){
-    //     f.contents().find('#toolbar').attr("style","display:none");
+    //     f.contents().find('#toolbar').setAttribute("style","display:none");
+    //   }
+
+    // function hideIt(){
+    //   var f =$('#tensor')
+    //   f.load(function(){
+    //     f.contents().find('#toolbar').hide();
     //   })
     // }
 
-    function hideIt(){
-      var f =$('#tensor')
-      f.load(function(){
-        f.contents().find('#toolbar').hide();
-      })
-    }
+    // document.getElementById("tensor").getElementsByTagName("toolbar").style.display='none';
+
+    // $("#tensor").contents().find("#toolbar").hide();
+
+    // $("#tensor").contents().find(".paper-toolbar-0").attr("style","display:none;");
+
+    // $("#tensor").contents().find("#left-pane").removeClass('vz-projector');
+
     </script>
 
   </body>
