@@ -178,7 +178,6 @@
                             <optgroup label="즐겨찾기" id="sel_fav">
                             </optgroup>
                             <optgroup label="그룹" id="sel_grp">
-                              <option>엥</option>
                             </optgroup>
                           </select>
                         </div>
@@ -195,8 +194,8 @@
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                           <button type="reset" class="btn btn-default">다시 작성</button>
-                          <button class="btn btn-success" onclick="bookMeet()">회의 예약</button>
-                          <button class="btn btn-primary" onclick="startMeet()">회의 시작</button>
+                          <input type="button" class="btn btn-success" onclick="bookMeet(); return false;">회의 예약</button>
+                          <input type="button" class="btn btn-primary" onclick="startMeet(); return false;">회의 시작</button>
                         </div>
                       </div>
 
@@ -324,20 +323,9 @@
       });
     };
 
-    var mid="";
+
     // book the meeting
     function bookMeet(){
-      addMeeting();
-    };
-
-    // start the meeting
-    function startMeet(){
-      addMeeting();
-      window.location.replace("project_detail.html?mid="+mid);
-    };
-
-    function addMeeting(){
-
       var selected = [];
       $('#sel_fav option:selected').each(function(){
         selected += $(this).val()+",";
@@ -345,6 +333,7 @@
       $('#sel_grp option:selected').each(function(){
         selected += $(this).val()+",";
       });
+      selected += unum;
       var arr = selected.split(",");
       console.log(arr);
       var arr2 = arr.filter((value, idx, arr) => arr.indexOf(value) === idx);
@@ -371,14 +360,57 @@
 
       $.ajax(settings)
         .done(function (response) {
-          console.log(response);
-          // mid = response['_id'];
+          window.location.replace("index.html");
         })
         .fail(function() {
           alert('미팅 추가 실패실패');
         });
 
-    }
+    };
+
+    // start the meeting
+    function startMeet(){
+      var selected = [];
+      $('#sel_fav option:selected').each(function(){
+        selected += $(this).val()+",";
+      });
+      $('#sel_grp option:selected').each(function(){
+        selected += $(this).val()+",";
+      });
+      selected += unum;
+      var arr = selected.split(",");
+      console.log(arr);
+      var arr2 = arr.filter((value, idx, arr) => arr.indexOf(value) === idx);
+      var arr3 = arr2.filter(function(e) { return e !== '' })
+      console.log(arr3);
+
+      var settings = {
+        crossDomain: true,
+        url: `https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/meet/info`,
+        type: "POST",
+        contentType: "application/json",
+        data: `{
+          "mname": "${$("#mname").val()}",
+          "date":"${$("#date").val()}",
+          "time": "${$("#time").val()}",
+          "where": "${$("#where").val()}",
+          "made": ${unum},
+          "memo": "${$("#meet_memo").val()}",
+          "member": [${arr3}]
+        }`
+      }
+
+      alert(settings.data);
+
+      $.ajax(settings)
+        .done(function (response) {
+          window.location.replace("project_detail.html?mid="+response["_id"]);
+        })
+        .fail(function() {
+          alert('미팅 추가 실패실패');
+        });
+    };
+
     </script>
 
   </body>
