@@ -500,6 +500,38 @@
             `
             $("#sum_cluster").append(li);
           }
+          // summarize per 나야나
+          var sumOfMe = response.sum_per_talk[unum];
+          console.log(sumOfMe);
+          for(var i=0;i<sumOfMe.length;i++) {
+            var text="";
+            for(var j=0;j<sumOfMe[i].length;j++) {
+              text += sumOfMe[i][j]+"<br/>";
+            }
+            var li = `
+            <li>
+              <div class="block">
+                <div class="tags">
+                  <a href="" class="tag">
+                    <span>주제${i+1}</span>
+                  </a>
+                </div>
+                <div class="block_content">
+                  <h2 class="title">
+                      <!-- <a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a> -->
+                  </h2>
+                  <!-- <div class="byline">
+                    <span>13 hours ago</span> by <a>Jane Smith</a>
+                  </div> -->
+                    <p>
+                      ${text}
+                    </p>
+                </div>
+              </div>
+            </li>
+            `
+            $("#my_cluster").append(li);
+          }
           // time_per_talker
           var echartTalker = echarts.init(document.getElementById('echart_pie'), theme);
           setTimePerTalker(echartTalker, response);

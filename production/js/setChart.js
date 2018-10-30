@@ -269,13 +269,14 @@ var setTimePerTalker = function(echartPie, response){
 var setTimePerCluster = function(echartBar, response) {
 
   var data = [response.time_all];
-  var data_sub = [0,0];
+  var data_sub = [0];
+  var time = 0
   var data_name = ['총 소요시간'];
   for(var i=0;i<response.time_per_cluster.length;i++) {
     data.push(response.time_per_cluster[i]);
     data_name.push('주제'+(i+1));
-    if(i == 0) continue;
-    data_sub.push(response.time_per_cluster[i-1]);
+    data_sub.push(time);
+    time += response.time_per_cluster[i];
   }
 
   console.log(data);
