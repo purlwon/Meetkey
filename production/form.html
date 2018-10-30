@@ -187,8 +187,7 @@
                         <label for="meet_memo" class="control-label col-md-3 col-sm-3 col-xs-12">비고
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <textarea id="meet_memo" class="form-control col-md-7 col-xs-12">
-                          </textarea>
+                          <textarea id="meet_memo" class="form-control col-md-7 col-xs-12"></textarea>
                         </div>
                       </div>
 
@@ -196,8 +195,8 @@
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                           <button type="reset" class="btn btn-default">다시 작성</button>
-                          <button type="submit" onclick="bookMeet();"  class="btn btn-success">회의 예약</button>
-                          <button type="submit" onclick="startMeet();" class="btn btn-primary">회의 시작</button>
+                          <button class="btn btn-success" onclick="bookMeet()">회의 예약</button>
+                          <button class="btn btn-primary" onclick="startMeet()">회의 시작</button>
                         </div>
                       </div>
 
@@ -245,7 +244,7 @@
 
     <script>
       $('#date').datetimepicker({
-        format: 'MM/DD/YYYY'
+        format: 'YYYY-MM-DD'
       });
 
       $('#time').datetimepicker({
@@ -267,99 +266,119 @@
       printGroup();
     });
 
+    // select option Favorite
+    function printFavorite(){
 
-      function postMeetingInfo() {
-        var id = $("#id").val();
-        var pw = $("#pw").val();
-
-        var settings = {
-          crossDomain: true,
-          url: "https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/login",
-          type: "POST",
-          contentType: "application/json",
-          data: `{
-            "uid": "${id}",
-            "pw": "${pw}"
-          }`
-        }
-
-        $.ajax(settings)
-          .done(function (response) {
-            document.cookie = `unum=${response.unum}`;
-            alert(document.cookie);
-            window.location.replace("https://s3.ap-northeast-2.amazonaws.com/elasticbeanstalk-ap-northeast-2-850538120357/views/dashboard.html");
-          })
-          .fail(function () {
-            alert('fail');
-          });
+      var settings = {
+        crossDomain: true,
+        url: `https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/add/favorite?unum=${unum}`,
+        type: "GET",
+        contentType: "application/json",
       }
 
-      // select option Favorite 
-      function printFavorite(){
+      $.ajax(settings)
+        .done(function (response) {
+          console.log(response);
+          if(response.message){
+            alert(response.message);
+          } else {
+            var favorites = response.data;
+            for(var i=0; i<favorites.length; i++){
+              var data = `<option value=${favorites[i].unum}>${favorites[i].uname}</option>`
 
-        var settings = {
-          crossDomain: true,
-          url: `https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/add/favorite?unum=${unum}`,
-          type: "GET",
-          contentType: "application/json",
-        }
+              $("#sel_fav").append(data);
 
-        $.ajax(settings)
-          .done(function (response) {
-            console.log(response);
-            if(response.message){
-              alert(response.message);
-            } else {
-              var favorites = response.data;
-              for(var i=0; i<favorites.length; i++){
-                var data = `<option value=${favorites[i].unum}>${favorites[i].uname}</option>`
-
-                $("#sel_fav").append(data);
-
-              }
             }
-          })
-          .fail(function() {
-            alert('즐겨찾는 계정을 불러오는데 실패했습니다.');
-          });
-      }
-
-      // select option Group
-      function printGroup(){
-
-        var settings = {
-          crossDomain: true,
-          url: `https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/add/group?unum=${unum}`,
-          type: "GET",
-          contentType: "application/json",
-        }
-
-        $.ajax(settings).done(function (response) {
-          for (var key in response) {
-            var group = response[key];
-            var member = ""
-            for(var i=0; i<group.length; i++){
-              var user = group[i].uname+"("+group[i].position+")";
-              if(i){ member += ", "+user; }
-              else { member += user; }
-            }
-            var data = `
-            <option value="${key}">${key}</option>
-            `
-            $("#sel_grp").append(data);
           }
+        })
+        .fail(function() {
+          alert('즐겨찾는 계정을 불러오는데 실패했습니다.');
         });
-      };
+    }
 
-      // book the meeting
-      function bookMeet(){
+    // select option Group
+    function printGroup(){
 
-      };
+      var settings = {
+        crossDomain: true,
+        url: `https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/add/group?unum=${unum}`,
+        type: "GET",
+        contentType: "application/json",
+      }
 
-      // start the meeting
-      function startMeet(){
+      $.ajax(settings).done(function (response) {
 
-      };
+        console.log(response);
+
+        for (var key in response) {
+          var group = response[key];
+          var member = []
+          for(var i=0; i<group.length; i++){
+            member.push(group[i].unum);
+          }
+          var data = `
+          <option value="${member}">${group[0].gname}</option>
+          `
+          $("#sel_grp").append(data);
+        }
+      });
+    };
+
+    var mid="";
+    // book the meeting
+    function bookMeet(){
+      addMeeting();
+    };
+
+    // start the meeting
+    function startMeet(){
+      addMeeting();
+      window.location.replace("project_detail.html?mid="+mid);
+    };
+
+    function addMeeting(){
+
+      var selected = [];
+      $('#sel_fav option:selected').each(function(){
+        selected += $(this).val()+",";
+      });
+      $('#sel_grp option:selected').each(function(){
+        selected += $(this).val()+",";
+      });
+      var arr = selected.split(",");
+      console.log(arr);
+      var arr2 = arr.filter((value, idx, arr) => arr.indexOf(value) === idx);
+      var arr3 = arr2.filter(function(e) { return e !== '' })
+      console.log(arr3);
+
+      var settings = {
+        crossDomain: true,
+        url: `https://kz2hltyjb2.execute-api.ap-northeast-2.amazonaws.com/test/meet/info`,
+        type: "POST",
+        contentType: "application/json",
+        data: `{
+          "mname": "${$("#mname").val()}",
+          "date":"${$("#date").val()}",
+          "time": "${$("#time").val()}",
+          "where": "${$("#where").val()}",
+          "made": ${unum},
+          "memo": "${$("#meet_memo").val()}",
+          "member": [${arr3}]
+        }`
+      }
+
+      alert(settings.data);
+
+      $.ajax(settings)
+        .done(function (response) {
+          console.log(response);
+          // mid = response['_id'];
+        })
+        .fail(function() {
+          alert('미팅 추가 실패실패');
+        });
+
+    }
     </script>
 
   </body>
