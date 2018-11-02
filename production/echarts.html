@@ -178,7 +178,7 @@
                   </div>
                   <div class="x_content text-center" style="height: 300px">
                     <!-- 회의 첨부파일 이미지 -->
-                    <img src="images/tmp.png" id="" style="max-height: 100%; max-width: 100%">
+                    <img src="" id="picture" style="max-height: 100%; max-width: 100%">
                   </div>
                 </div>
               </div>
@@ -538,6 +538,8 @@
           // time_per_cluster
           var echartCluster = echarts.init(document.getElementById('echart_bar_horizontal'), theme);
           setTimePerCluster(echartCluster, response);
+          //picture
+          $("#picture").attr('src', response.picture);
           })
           .fail(function () {
             alert('fail');
