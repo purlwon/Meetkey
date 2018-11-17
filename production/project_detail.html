@@ -456,6 +456,11 @@
 
         $.ajax(settings)
           .done(function (response) {
+            if ("message" in response) {
+              alert(response.message);
+            } else {
+              alert("회의분석이 완료되었습니다.")
+            }
           })
           .fail(function () {
             alert('fail');
